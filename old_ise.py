@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 import spacy
-from SpanBERT.spanbert import SpanBERT
+from spanbert import SpanBERT
 from spacy_help_functions import get_entities, create_entity_pairs
 from gemini_helper_6111 import get_gemini_completion
 import json
@@ -43,7 +43,7 @@ def is_valid_entity(subj_type, obj_type, relation_id):
     return False
 
 def main():
-    gemini_api_key = sys.argv[3]
+    # gemini_api_key = sys.argv[3]
     option = sys.argv[4] # spanbert or gemini 
 
     r = sys.argv[5] # which relation to extract from
@@ -55,7 +55,7 @@ def main():
     nlp = spacy.load("en_core_web_lg") 
     # Load pre-trained SpanBERT model
     spanbert = SpanBERT("./pretrained_spanbert")
-
+    relation_desc = {"1": "Schools_Attended", "2": "Work_For", "3": "Live_In", "4": "Top_Member_Employees"}
     relation_map = {
         "1": "per:schools_attended",
         "2": "per:employee_of",
@@ -63,6 +63,19 @@ def main():
         "4": "org:top_members/employees"
     }
     target_relation = relation_map[r]
+    
+    print("Loading pre-trained spanBERT from ./pretrained_spanbert\n")
+    print("____")
+    print("Parameters:")
+    print("Client key\t=", sys.argv[1])
+    print("Engine key\t=", sys.argv[2])
+    print("Gemini key\t=", sys.argv[3])
+    print("Method\t\t=", option[1:])  # remove leading '-' for display
+    print("Relation\t=", relation_desc[r])
+    print("Threshold\t=", t)
+    print("Query\t\t=", q)
+    print("# of Tuples\t=", k)
+    print("Loading necessary libraries; This should take a minute or so ...")
 
     # 1. Initialize X, the set of extracted tuples, as the empty set.
     X = set()
@@ -72,7 +85,7 @@ def main():
     while True:
         # 2. Query your Google Custom Search Engine to obtain the URLs for the top-10 webpages for query q; 
         # you can reuse your own code from Project 1 for this part if you so wish
-        print(f"\n\n=========== Iteration: {iteration} - Query: {q} ===========\n")
+        print(f"\n=========== Iteration: {iteration} - Query: {q} ===========\n")
         iteration += 1
         pages = send_query(q.split())
         urls = []
@@ -86,9 +99,17 @@ def main():
         # 3.a. Retrieve the corresponding webpage; if you cannot retrieve the webpage (e.g., because of a timeout), 
         # just skip it and move on, even if this involves processing fewer than 10 webpages in this iteration.
         for idx, url in enumerate(urls):
+            if url in seen:
+                print(f"URL {url} already processed. Skipping.")
+                continue
             print(f"\nURL ( {idx+1} / {len(urls)}): {url}")
+            print("\tFetching text from url ...")
+
             if url not in seen:
                 response = requests.get(url)
+                if response.status_code != 200:
+                    print(f"\tUnable to fetch URL. Skipping.")
+                    continue
                 if response.status_code == 200:
                     # 3.b. Extract the actual plain text from the webpage using Beautiful Soup.
                     soup = BeautifulSoup(response.text, 'html.parser')
@@ -104,31 +125,37 @@ def main():
                     print("\tAnnotating the webpage using spacy...")
                     sentences = list(doc.sents)
                     print("\tExtracted {} sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...".format(len(sentences)))
-                    extracted_from_page = 0
-                    for idx, sentence in enumerate(sentences):
-                        if idx % 5 == 0:
+                    
+                    sentences_with_annotation = 0
+                    count_before = len(X)
+
+                    for sent_idx, sentence in enumerate(sentences):
+                        if sent_idx % 5 == 0:
                             print(f"\tProcessed {idx} / {len(sentences)} sentences")
                         # print("\n\nProcessing sentence: {}".format(sentence))
                         # print("Tokenized sentence: {}".format([token.text for token in sentence]))
-                        ents = get_entities(sentence, entities_of_interest)
+                        # ents = get_entities(sentence, entities_of_interest)
                         # print("spaCy extracted entities: {}".format(ents))
 
                         # 3.e.i If -spanbertis specified, use the sentences and named entity pairs as input to SpanBERT 
                         # to predict the corresponding relations, and extract all instances of the relation specified by input parameter r. 
-                        if option == "-spanbert":
-                            candidate_pairs = []
-                            sentence_entity_pairs = create_entity_pairs(sentence, entities_of_interest)
-                            for ep in sentence_entity_pairs:
-                                tokens = ep[0]
-                                subj = ep[1]
-                                obj = ep[2]
-                                # TODO: keep subject-object pairs of the right type for the target relation (e.g., Person:Organization for the "Work_For" relation)
-                                if is_valid_entity(subj[1], obj[1], r):
-                                    candidate_pairs.append({"tokens": tokens, "subj": subj, "obj": obj})
-                            if not candidate_pairs:
-                                print("No candidate entity pairs found in sentence.")
-                                continue
+                        
+                        candidate_pairs = []
+                        sentence_entity_pairs = create_entity_pairs(sentence, entities_of_interest)
+                        for ep in sentence_entity_pairs:
+                            tokens = ep[0]
+                            subj = ep[1]
+                            obj = ep[2]
+                            # TODO: keep subject-object pairs of the right type for the target relation (e.g., Person:Organization for the "Work_For" relation)
+                            if is_valid_entity(subj[1], obj[1], r):
+                                candidate_pairs.append({"tokens": tokens, "subj": subj, "obj": obj})
+                                candidate_pairs.append({"tokens": tokens, "subj": obj, "obj": subj})
+                        if not candidate_pairs:
+                            # print("No candidate entity pairs found in sentence.")
+                            continue
+                        sentences_with_annotation += 1
                             
+                        if option == "-spanbert":
                             relation_preds = spanbert.predict(candidate_pairs)
                             # 3.f.i If -spanbert is specified, identify the tuples that have an associated extraction confidence of at least t 
                             # and add them to set X.
@@ -136,9 +163,17 @@ def main():
                                 subj_text = ex["subj"][0]
                                 obj_text = ex["obj"][0]
                                 relation, confidence = pred
+                                print("\t=== Extracted Relation ===")
+                                print("\tInput tokens:", ex["tokens"])
+                                print(f"\tOutput Confidence: {confidence:.8f} ; Subject: {subj_text} ; Object: {obj_text} ;")
 
                                 if relation == target_relation and confidence >= t:
+                                    print("\tAdding to set of extracted relations")
+                                    print("\t==========")
                                     X.add((subj_text, relation, obj_text, confidence))
+                                else:
+                                    print("\tConfidence is lower than threshold confidence. Ignoring this.")
+                                    print("\t==========")
 
                         
                         # 3.e.ii Otherwise, if -gemini is specified, use the Google Gemini API for relation extraction. 
@@ -181,6 +216,11 @@ def main():
                                 X.add((subj, rel, obj, 1.0))
 
                             print(response_text)
+            # After processing all sentences in the URL
+            relations_from_url = len(X) - count_before
+            print(f"\n\tExtracted annotations for {sentences_with_annotation} out of total {len(sentences)} sentences")
+            print(f"\tRelations extracted from this website: {relations_from_url} (Overall: {len(X)})")
+
 
             # 4. Remove exact duplicates from set X: if X contains tuples that are identical to each other, 
             # keep only the copy that has the highest extraction confidence (if -spanbert is specified) and 
@@ -205,8 +245,10 @@ def main():
                     # (Alternatively, you can return all of the tuples in X, not just the top-k such tuples; 
                     # # this is what the reference implementation does.)
                     X_final = X_deduplicated
+                print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_final)} ) =================")
                 for i, (subj, rel, obj, conf) in enumerate(X_final):
                     print(f"{i+1}. ({subj}, {rel}, {obj})\tConfidence: {conf:.2f}")
+                print("Total # of iterations =", iteration)
                 return
 
             # 6. Otherwise, select from X a tuple y such that 
@@ -218,7 +260,7 @@ def main():
             else: 
                 X_sorted = sorted(X, key=lambda x: x[3], reverse=True)
                 next_query_tuple = None
-                for y in X_deduplicated:
+                for y in X_sorted:
                     subj, rel, obj, confidence = y
                     key = (subj, rel, obj)
                     if key not in used_queries:
