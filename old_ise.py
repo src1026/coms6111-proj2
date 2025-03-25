@@ -164,7 +164,7 @@ def main():
                                 obj_text = ex["obj"][0]
                                 relation, confidence = pred
                                 print("\t=== Extracted Relation ===")
-                                print("\tInput tokens:", ex["tokens"])
+                                print("\tInput tokens:", " ".join(token.strip() for token in ex["tokens"]))
                                 print(f"\tOutput Confidence: {confidence:.8f} ; Subject: {subj_text} ; Object: {obj_text} ;")
 
                                 if relation == target_relation and confidence >= t:
@@ -172,7 +172,10 @@ def main():
                                     print("\t==========")
                                     X.add((subj_text, relation, obj_text, confidence))
                                 else:
-                                    print("\tConfidence is lower than threshold confidence. Ignoring this.")
+                                    if relation != target_relation:
+                                        print("\tRelation is not the target relation. Ignoring this.")
+                                    if confidence < t:
+                                        print("\tConfidence is lower than threshold confidence. Ignoring this.")
                                     print("\t==========")
 
                         
@@ -190,7 +193,7 @@ def main():
 
                             prompt_text = f"Given a sentence, extract all relations for the target relation.\n"
                             if r == "1":
-                                prompt_text += "Relation: Schfools_Attended\nSubject: PERSON, Object: ORGANIZATION\n"
+                                prompt_text += "Relation: Schools_Attended\nSubject: PERSON, Object: ORGANIZATION\n"
                             elif r == "2":
                                 prompt_text += "Relation: Work_For\nSubject: PERSON, Object: ORGANIZATION\n"
                             elif r == "3":
@@ -269,6 +272,11 @@ def main():
                         break
                 if next_query_tuple is None:
                     print("ISE has stalled. No more new tuples to query.")
+                    X_deduplicated = [(subj, rel, obj, conf) for (subj, rel, obj), conf in X_dict.items()]
+                    print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_deduplicated)} ) =================")
+                    for i, (subj, rel, obj, conf) in enumerate(X_deduplicated):
+                        print(f"{i+1}. ({subj}, {rel}, {obj})\tConfidence: {conf:.2f}")
+                    print("Total # of iterations =", iteration)
                     return
 
                 subj, rel, obj, confidence = next_query_tuple
