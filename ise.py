@@ -114,6 +114,9 @@ def main():
                                 # TODO: keep subject-object pairs of the right type for the target relation (e.g., Person:Organization for the "Work_For" relation)
                                 if is_valid_entity(subj[1], obj[1], r):
                                     candidate_pairs.append({"tokens": tokens, "subj": subj, "obj": obj})
+                        if not candidate_pairs:
+                            print("No candidate entity pairs found in sentence.")
+                            continue
                             
                             relation_preds = spanbert.predict(candidate_pairs)
                             # 3.f.i If -spanbert is specified, identify the tuples that have an associated extraction confidence of at least t 
