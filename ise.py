@@ -2,10 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 import spacy
-from spanbert import SpanBERT
+from SpanBERT.spanbert import SpanBERT
 from spacy_help_functions import get_entities, create_entity_pairs
 from gemini_helper_6111 import get_gemini_completion
 import json
+from googleapiclient.discovery import build
 
 entities_of_interest = ["ORGANIZATION", "PERSON", "LOCATION", "CITY", "STATE_OR_PROVINCE", "COUNTRY"]
 
@@ -66,11 +67,13 @@ def main():
     # 1. Initialize X, the set of extracted tuples, as the empty set.
     X = set()
     used_queries = set()
+    iteration = 0
 
     while True:
         # 2. Query your Google Custom Search Engine to obtain the URLs for the top-10 webpages for query q; 
         # you can reuse your own code from Project 1 for this part if you so wish
-        print(f"\n\n======== Current query: {q} ========\n")
+        print(f"\n\n=========== Iteration: {iteration} - Query: {q} ===========\n")
+        iteration += 1
         pages = send_query(q.split())
         urls = []
         for page in pages:
@@ -82,7 +85,8 @@ def main():
 
         # 3.a. Retrieve the corresponding webpage; if you cannot retrieve the webpage (e.g., because of a timeout), 
         # just skip it and move on, even if this involves processing fewer than 10 webpages in this iteration.
-        for url in urls:
+        for idx, url in enumerate(urls):
+            print(f"\nURL ( {idx+1} / {len(urls)}): {url}")
             if url not in seen:
                 response = requests.get(url)
                 if response.status_code == 200:
