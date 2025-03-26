@@ -9,10 +9,11 @@ import json
 from googleapiclient.discovery import build
 
 entities_of_interest = ["ORGANIZATION", "PERSON", "LOCATION", "CITY", "STATE_OR_PROVINCE", "COUNTRY"]
+GOOGLE_API_KEY = "AIzaSyCbvJbYa8AKkBHDd5efd63Ksdd6TfxcojE"
+GOOGLE_CX_ID = "c33c1185e479a47da"
+GEMINI_API_KEY = 'AIzaSyBDkYccGdkn3-z4L_spz7bzsjmBaWToHAw'
 
 def send_query(query):
-        GOOGLE_API_KEY = sys.argv[1]
-        GOOGLE_CX_ID = sys.argv[2]
         # retrieve the top 10 results from google using default value
         service = build(
         "customsearch", "v1", developerKey=GOOGLE_API_KEY
@@ -67,9 +68,9 @@ def main():
     print("Loading pre-trained spanBERT from ./pretrained_spanbert\n")
     print("____")
     print("Parameters:")
-    print("Client key\t=", sys.argv[1])
-    print("Engine key\t=", sys.argv[2])
-    print("Gemini key\t=", sys.argv[3])
+    print("Client key\t=", GOOGLE_API_KEY)
+    print("Engine key\t=", GOOGLE_CX_ID)
+    print("Gemini key\t=", GEMINI_API_KEY)
     print("Method\t\t=", option[1:])  # remove leading '-' for display
     print("Relation\t=", relation_desc[r])
     print("Threshold\t=", t)
@@ -82,6 +83,7 @@ def main():
     used_queries = set()
     iteration = 0
 
+    processed_urls = set()
     while True:
         # 2. Query your Google Custom Search Engine to obtain the URLs for the top-10 webpages for query q; 
         # you can reuse your own code from Project 1 for this part if you so wish
@@ -91,7 +93,6 @@ def main():
         urls = []
         for page in pages:
             urls.append(page.get('link'))
-        seen = set()
 
         # 3. For each URL from the previous step that you have not processed before 
         # (you should skip already-seen URLs, even if this involves processing fewer than 10 webpages in this iteration):
@@ -99,13 +100,13 @@ def main():
         # 3.a. Retrieve the corresponding webpage; if you cannot retrieve the webpage (e.g., because of a timeout), 
         # just skip it and move on, even if this involves processing fewer than 10 webpages in this iteration.
         for idx, url in enumerate(urls):
-            if url in seen:
+            if url in processed_urls:
                 print(f"URL {url} already processed. Skipping.")
                 continue
             print(f"\nURL ( {idx+1} / {len(urls)}): {url}")
             print("\tFetching text from url ...")
 
-            if url not in seen:
+            if url not in processed_urls:
                 response = requests.get(url)
                 if response.status_code != 200:
                     print(f"\tUnable to fetch URL. Skipping.")
@@ -117,7 +118,7 @@ def main():
                     # 3.c. If the resulting plain text is longer than 10,000 characters, truncate the text to its first 10,000 characters (for efficiency) and discard the rest.
                     if len(text) > 10000:
                         text = text[:10000]
-                    seen.add(url)
+                    processed_urls.add(url)
                     print("\tWebpage length (num characters):", len(text))
                     # 3.d. Use the spaCy library to split the text into sentences and extract named entities 
                     # (e.g., PERSON, ORGANIZATION).
@@ -131,11 +132,25 @@ def main():
 
                     for sent_idx, sentence in enumerate(sentences):
                         if sent_idx % 5 == 0:
-                            print(f"\tProcessed {idx} / {len(sentences)} sentences")
+                            print(f"\tProcessed {sent_idx} / {len(sentences)} sentences")
                         # print("\n\nProcessing sentence: {}".format(sentence))
                         # print("Tokenized sentence: {}".format([token.text for token in sentence]))
-                        # ents = get_entities(sentence, entities_of_interest)
                         # print("spaCy extracted entities: {}".format(ents))
+
+                        # filter out sentences that don't contain named entities of the right type for the target relation of interest r
+                        required_types = None
+                        if r == "1" or r == "2":
+                            required_types = {"PERSON", "ORGANIZATION"}
+                        elif r == "3":
+                            required_types = {"PERSON"}
+                        elif r == "4":
+                            required_types = {"ORGANIZATION", "PERSON"}
+
+                        ents = get_entities(sentence, entities_of_interest)
+                        entity_types = {etype for _, etype in ents}
+                        if required_types and not required_types.issubset(entity_types):
+                            print("Sentence does not contain the required entity types. Skipping.")
+                            continue
 
                         # 3.e.i If -spanbertis specified, use the sentences and named entity pairs as input to SpanBERT 
                         # to predict the corresponding relations, and extract all instances of the relation specified by input parameter r. 
@@ -173,6 +188,7 @@ def main():
                                     X.add((subj_text, relation, obj_text, confidence))
                                 else:
                                     if relation != target_relation:
+                                        print("\tCurrent relation: ", relation)
                                         print("\tRelation is not the target relation. Ignoring this.")
                                     if confidence < t:
                                         print("\tConfidence is lower than threshold confidence. Ignoring this.")
@@ -191,7 +207,9 @@ def main():
                             top_p = 1
                             top_k = 32
 
-                            prompt_text = f"Given a sentence, extract all relations for the target relation.\n"
+                            prompt_text = "identify the relations and return it as a tuple."
+                            # f"Given a sentence, extract all relations for the target relation.\n"
+                            
                             if r == "1":
                                 prompt_text += "Relation: Schools_Attended\nSubject: PERSON, Object: ORGANIZATION\n"
                             elif r == "2":
@@ -200,12 +218,16 @@ def main():
                                 prompt_text += "Relation: Live_In\nSubject: PERSON, Object: LOCATION\n"
                             elif r == "4":
                                 prompt_text += "Relation: Top_Member_Employees\nSubject: ORGANIZATION, Object: PERSON\n"
-                            
+                            """
                             prompt_text += (
                                     "Return the answer as a JSON array of triples [subject, relation, object]. "
                                     "If no relation is found, return an empty JSON array [].\n"
+                            )"""
+                            prompt_text += (
+                                    "return the relation as a tuple.\n for example: (sundar pichai, google)"
                             )
                             prompt_text += f"Sentence: {sentence.text.strip()}"
+                            
 
                             response_text = get_gemini_completion(prompt_text, model_name, max_tokens, temperature, top_p, top_k)
                             print("Gemini API response:", response_text)
@@ -250,7 +272,7 @@ def main():
                     X_final = X_deduplicated
                 print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_final)} ) =================")
                 for i, (subj, rel, obj, conf) in enumerate(X_final):
-                    print(f"{i+1}. ({subj}, {rel}, {obj})\tConfidence: {conf:.2f}")
+                    print(f"Confidence: {conf:.7f} \t\t| Subject: {subj} \t\t| Object: {obj}")
                 print("Total # of iterations =", iteration)
                 return
 
@@ -275,7 +297,7 @@ def main():
                     X_deduplicated = [(subj, rel, obj, conf) for (subj, rel, obj), conf in X_dict.items()]
                     print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_deduplicated)} ) =================")
                     for i, (subj, rel, obj, conf) in enumerate(X_deduplicated):
-                        print(f"{i+1}. ({subj}, {rel}, {obj})\tConfidence: {conf:.2f}")
+                        print(f"Confidence: {conf:.7f} \t\t| Subject: {subj} \t\t| Object: {obj}")
                     print("Total # of iterations =", iteration)
                     return
 
