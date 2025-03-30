@@ -1,0 +1,1785 @@
+Loading pre-trained spanBERT from ./pretrained_spanbert
+Loading pre-trained spanBERT from ./pretrained_spanbert
+
+____
+Parameters:
+Client key	= AIzaSyCbvJbYa8AKkBHDd5efd63Ksdd6TfxcojE
+Engine key	= c33c1185e479a47da
+Gemini key	= AIzaSyBDkYccGdkn3-z4L_spz7bzsjmBaWToHAw
+Method		= spanbert
+Relation	= Work_For
+Threshold	= 0.7
+Query		= bill gates microsoft
+# of Tuples	= 10
+Loading necessary libraries; This should take a minute or so ...
+
+=========== Iteration: 0 - Query: bill gates microsoft ===========
+
+
+URL ( 1 / 10): https://en.wikipedia.org/wiki/Bill_Gates
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 37 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens:  Bill Gates - Wikipedia  Jump to content  Main menu  Main menu  move to sidebar  hide  Navigation  Main pageContentsCurrent eventsRandom articleAbout
+	Output Confidence: 0.99949229 ; Subject: Bill Gates - Wikipedia ; Object: Main ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bill Gates - Wikipedia  Jump to content  Main menu  Main menu  move to sidebar  hide  Navigation  Main pageContentsCurrent eventsRandom articleAbout
+	Output Confidence: 0.99964499 ; Subject: Main ; Object: Bill Gates - Wikipedia ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 37 sentences
+	Processed 10 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill GatesGates in 2024BornWilliam Henry Gates III ( 1955 - 10 - 28 ) October 28 , 1955 ( age  69)Seattle , Washington , U.S.EducationHarvard University (
+	Output Confidence: 0.97336900 ; Subject: Bill GatesGates ; Object: U.S.EducationHarvard University ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill GatesGates in 2024BornWilliam Henry Gates III ( 1955 - 10 - 28 ) October 28 , 1955 ( age  69)Seattle , Washington , U.S.EducationHarvard University (
+	Output Confidence: 0.99916804 ; Subject: U.S.EducationHarvard University ; Object: Bill GatesGates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill GatesGates in 2024BornWilliam Henry Gates III ( 1955 - 10 - 28 ) October 28 , 1955 ( age  69)Seattle , Washington , U.S.EducationHarvard University (
+	Output Confidence: 0.89732760 ; Subject: Henry Gates III ; Object: U.S.EducationHarvard University ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill GatesGates in 2024BornWilliam Henry Gates III ( 1955 - 10 - 28 ) October 28 , 1955 ( age  69)Seattle , Washington , U.S.EducationHarvard University (
+	Output Confidence: 0.99894124 ; Subject: U.S.EducationHarvard University ; Object: Henry Gates III ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: dropped  out)OccupationsBusinessmanphilanthropistcomputer programmerwriterYears  active1972 – presentKnown  for  Pioneer of the personal computer revolution with Paul Allen  Co -
+	Output Confidence: 0.99954319 ; Subject: active1972 ; Object: Pioneer ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: dropped  out)OccupationsBusinessmanphilanthropistcomputer programmerwriterYears  active1972 – presentKnown  for  Pioneer of the personal computer revolution with Paul Allen  Co -
+	Output Confidence: 0.99976987 ; Subject: Pioneer ; Object: active1972 ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Websitegatesnotes.comSignature  This article is part of a series about  Bill Gates  Personal  Awards and honors  Philanthropy  Political positions  Public image  Residence  Companies  Traf -
+	Output Confidence: 0.98666894 ; Subject: Bill Gates ; Object: Philanthropy
+Political ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Websitegatesnotes.comSignature  This article is part of a series about  Bill Gates  Personal  Awards and honors  Philanthropy  Political positions  Public image  Residence  Companies  Traf -
+	Output Confidence: 0.99850392 ; Subject: Philanthropy
+Political ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 15 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens: Gates was educated at the private Lakeside School ,
+	Output Confidence: 0.99262518 ; Subject: Gates ; Object: Lakeside School ;
+	Current relation:  per:schools_attended
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Gates was educated at the private Lakeside School ,
+	Output Confidence: 0.99419618 ; Subject: Lakeside School ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: He enrolled at Harvard College in the fall of 1973 but dropped out after two years when he and Allen co - founded Microsoft .
+	Output Confidence: 0.60509211 ; Subject: Allen ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: He enrolled at Harvard College in the fall of 1973 but dropped out after two years when he and Allen co - founded Microsoft .
+	Output Confidence: 0.97967637 ; Subject: Microsoft ; Object: Allen ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 20 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens: he and Warren Buffett founded the Giving Pledge ,
+	Output Confidence: 0.97438657 ; Subject: Warren Buffett ; Object: the Giving Pledge ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: he and Warren Buffett founded the Giving Pledge ,
+	Output Confidence: 0.97425872 ; Subject: the Giving Pledge ; Object: Warren Buffett ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: he and Warren Buffett founded the Giving Pledge , whereby they and other billionaires pledge to give at least half of their wealth to philanthropy .
+	Output Confidence: 0.93510121 ; Subject: Warren Buffett ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: he and Warren Buffett founded the Giving Pledge , whereby they and other billionaires pledge to give at least half of their wealth to philanthropy .
+	Output Confidence: 0.90548486 ; Subject: philanthropy ; Object: Warren Buffett ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 25 / 37 sentences
+	Processed 30 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens:  When Gates was young his parents wanted him to pursue a career in law.[9 ] During his childhood , his family regularly attended a church of the Congregational Christian Churches ,
+	Output Confidence: 0.99150062 ; Subject: Gates ; Object: the Congregational Christian Churches ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  When Gates was young his parents wanted him to pursue a career in law.[9 ] During his childhood , his family regularly attended a church of the Congregational Christian Churches ,
+	Output Confidence: 0.99933052 ; Subject: the Congregational Christian Churches ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  When Gates was young his parents wanted him to pursue a career in law.[9 ] During his childhood , his family regularly attended a church of the Congregational Christian Churches , a Protestant Reformed denomination.[10][11][12 ]
+	Output Confidence: 0.54074627 ; Subject: Gates ; Object: Protestant Reformed ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  When Gates was young his parents wanted him to pursue a career in law.[9 ] During his childhood , his family regularly attended a church of the Congregational Christian Churches , a Protestant Reformed denomination.[10][11][12 ]
+	Output Confidence: 0.99766171 ; Subject: Protestant Reformed ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School ,
+	Output Confidence: 0.83363175 ; Subject: Paul Allen ; Object: Teletype Model 33 ASR ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School ,
+	Output Confidence: 0.99954337 ; Subject: Teletype Model 33 ASR ; Object: Paul Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School ,
+	Output Confidence: 0.99967229 ; Subject: Paul Allen ; Object: Lakeside School ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School ,
+	Output Confidence: 0.99977440 ; Subject: Lakeside School ; Object: Paul Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School , 1970  At age 13 , he enrolled in the private Lakeside prep school.[14][15 ]
+	Output Confidence: 0.74996316 ; Subject: Paul Allen ; Object: Lakeside ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Paul Allen seated at Teletype Model 33 ASR terminals in Lakeside School , 1970  At age 13 , he enrolled in the private Lakeside prep school.[14][15 ]
+	Output Confidence: 0.99629527 ; Subject: Lakeside ; Object: Paul Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Gates took an interest in programming the GE system in BASIC ,
+	Output Confidence: 0.99966848 ; Subject: Gates ; Object: GE ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Gates took an interest in programming the GE system in BASIC ,
+	Output Confidence: 0.99982786 ; Subject: GE ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 35 / 37 sentences
+	=== Extracted Relation ===
+	Input tokens: Gates and other students sought time on systems including DEC PD
+	Output Confidence: 0.74867994 ; Subject: Gates ; Object: DEC PD ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Gates and other students sought time on systems including DEC PD
+	Output Confidence: 0.99966311 ; Subject: DEC PD ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+
+URL ( 2 / 10): https://www.instagram.com/thisisbillgates/?hl=en
+	Fetching text from url ...
+	Webpage length (num characters): 61
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+
+URL ( 3 / 10): https://x.com/billgates
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 4 / 10): https://www.youtube.com/billgates
+	Fetching text from url ...
+	Webpage length (num characters): 171
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill Gates - YouTubeAboutPressCopyrightContact usCreatorsAdvertiseDevelopersTermsPrivacyPolicy & SafetyHow YouTube worksTest new featuresNFL Sunday Ticket © 2025 Google LLC
+	Output Confidence: 0.99271315 ; Subject: Bill Gates ; Object: Google LLC ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates - YouTubeAboutPressCopyrightContact usCreatorsAdvertiseDevelopersTermsPrivacyPolicy & SafetyHow YouTube worksTest new featuresNFL Sunday Ticket © 2025 Google LLC
+	Output Confidence: 0.99909818 ; Subject: Google LLC ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+
+URL ( 5 / 10): https://news.microsoft.com/2020/03/13/microsoft-announces-change-to-its-board-of-directors/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 6 / 10): https://www.gatesnotes.com/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 7 / 10): https://www.linkedin.com/in/williamhgates
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 8 / 10): https://news.microsoft.com/2006/06/15/microsoft-announces-plans-for-july-2008-transition-for-bill-gates/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 9 / 10): http://www.microsoft.com/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 4 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 4 sentences
+
+URL ( 10 / 10): https://answers.microsoft.com/en-us/windows/forum/all/a-short-letter-to-bill-gates/59fdd4d0-6330-40da-9e66-fa6c29836454
+	Fetching text from url ...
+	Webpage length (num characters): 35
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+
+	Extracted annotations for 0 out of total 1 sentences
+	Relations extracted from this website: 0 (Overall: 3)
+y: ('Bill Gates', 'per:employee_of', 'Philanthropy\nPolitical', 0.98666894)
+used_queries: set()
+
+=========== Iteration: 1 - Query: Bill Gates Philanthropy
+Political ===========
+
+URL https://en.wikipedia.org/wiki/Bill_Gates already processed. Skipping.
+
+URL ( 2 / 10): https://www.nytimes.com/2024/10/22/us/elections/bill-gates-future-forward-kamala-harris.html
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 3 / 10): https://www.influencewatch.org/person/bill-gates/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 82 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill Gates is the founder and former CEO of technology giant Microsoft .
+	Output Confidence: 0.99683726 ; Subject: Bill Gates ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates is the founder and former CEO of technology giant Microsoft .
+	Output Confidence: 0.98364049 ; Subject: Microsoft ; Object: Bill Gates ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 82 sentences
+	Processed 10 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft ,
+	Output Confidence: 0.99820507 ; Subject: Allen ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft ,
+	Output Confidence: 0.99917114 ; Subject: Gates ; Object: Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft ,
+	Output Confidence: 0.93488663 ; Subject: Allen ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft ,
+	Output Confidence: 0.96821219 ; Subject: Microsoft ; Object: Allen ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft , which turned Gates into the world ’s then -
+	Output Confidence: 0.97130966 ; Subject: Allen ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4 Allen and Gates later founded Microsoft , which turned Gates into the world ’s then -
+	Output Confidence: 0.99916983 ; Subject: Gates ; Object: Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 15 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: 5  Bill Gates met Melinda French in 1987 when she began working at Microsoft .
+	Output Confidence: 0.99599636 ; Subject: Bill Gates ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 5  Bill Gates met Melinda French in 1987 when she began working at Microsoft .
+	Output Confidence: 0.78603536 ; Subject: Microsoft ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 5  Bill Gates met Melinda French in 1987 when she began working at Microsoft .
+	Output Confidence: 0.97773618 ; Subject: Melinda French ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 5  Bill Gates met Melinda French in 1987 when she began working at Microsoft .
+	Output Confidence: 0.99730432 ; Subject: Microsoft ; Object: Melinda French ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 20 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: 8  U2 frontman Bono and the Gates ’
+	Output Confidence: 0.99959844 ; Subject: Bono ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 8  U2 frontman Bono and the Gates ’
+	Output Confidence: 0.99957234 ; Subject: Gates ; Object: Bono ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4  Bill divorced from Melinda in 2021 , though she remained as co - chair of the Foundation ’s board .
+	Output Confidence: 0.99503517 ; Subject: Bill ; Object: Foundation ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4  Bill divorced from Melinda in 2021 , though she remained as co - chair of the Foundation ’s board .
+	Output Confidence: 0.98549229 ; Subject: Foundation ; Object: Bill ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4  Bill divorced from Melinda in 2021 , though she remained as co - chair of the Foundation ’s board .
+	Output Confidence: 0.86273128 ; Subject: Melinda ; Object: Foundation ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 4  Bill divorced from Melinda in 2021 , though she remained as co - chair of the Foundation ’s board .
+	Output Confidence: 0.99514800 ; Subject: Foundation ; Object: Melinda ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: leaving Bill as the sole chair of the Foundation as of January 2025 .
+	Output Confidence: 0.99627411 ; Subject: Bill ; Object: Foundation ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: leaving Bill as the sole chair of the Foundation as of January 2025 .
+	Output Confidence: 0.98967957 ; Subject: Foundation ; Object: Bill ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 25 / 82 sentences
+	Processed 30 / 82 sentences
+	Processed 35 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: This was also the year in which poor health forced Allen to leave Microsoft .
+	Output Confidence: 0.99961275 ; Subject: Allen ; Object: Microsoft ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: This was also the year in which poor health forced Allen to leave Microsoft .
+	Output Confidence: 0.99988413 ; Subject: Microsoft ; Object: Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 40 / 82 sentences
+	Processed 45 / 82 sentences
+	Processed 50 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: However , under new CEO Satya Nadella , the company grossed over $ 125 billion in 2019 , in part thanks to buyouts of companies like Skype and GitHub ,
+	Output Confidence: 0.99367142 ; Subject: Satya Nadella ; Object: Skype ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: However , under new CEO Satya Nadella , the company grossed over $ 125 billion in 2019 , in part thanks to buyouts of companies like Skype and GitHub ,
+	Output Confidence: 0.92055082 ; Subject: Skype ; Object: Satya Nadella ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: However , under new CEO Satya Nadella , the company grossed over $ 125 billion in 2019 , in part thanks to buyouts of companies like Skype and GitHub ,
+	Output Confidence: 0.99030769 ; Subject: Satya Nadella ; Object: GitHub ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: However , under new CEO Satya Nadella , the company grossed over $ 125 billion in 2019 , in part thanks to buyouts of companies like Skype and GitHub ,
+	Output Confidence: 0.88203549 ; Subject: GitHub ; Object: Satya Nadella ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amazon claims that the contract bidding process was unfair because of President Donald Trump ’s attacks on Amazon and its CEO ,
+	Output Confidence: 0.99982953 ; Subject: Donald Trump ; Object: Amazon ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amazon claims that the contract bidding process was unfair because of President Donald Trump ’s attacks on Amazon and its CEO ,
+	Output Confidence: 0.99988723 ; Subject: Amazon ; Object: Donald Trump ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 55 / 82 sentences
+	Processed 60 / 82 sentences
+	Processed 65 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.99767202 ; Subject: Gates ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.98183423 ; Subject: Microsoft ; Object: Gates ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.99747062 ; Subject: Gates ; Object: Berkshire Hathaway ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.98993802 ; Subject: Berkshire Hathaway ; Object: Gates ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.99635196 ; Subject: Warren Buffett’s ; Object: Berkshire Hathaway ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: 20  Gates formally stepped down from Microsoft ’s board and from the board of Warren Buffett ’s investment firm Berkshire Hathaway in March 2020 .
+	Output Confidence: 0.92033392 ; Subject: Berkshire Hathaway ; Object: Warren Buffett’s ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 70 / 82 sentences
+	=== Extracted Relation ===
+	Input tokens: Originally , the Foundation was named for Bill Gates ’ father , William H. Gates , who managed the Foundation ’s day -
+	Output Confidence: 0.61326885 ; Subject: Bill Gates ; Object: Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Originally , the Foundation was named for Bill Gates ’ father , William H. Gates , who managed the Foundation ’s day -
+	Output Confidence: 0.99004096 ; Subject: Foundation ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: William H. Gates , who managed the Foundation ’s day -
+	Output Confidence: 0.96154940 ; Subject: William H. Gates ; Object: Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: William H. Gates , who managed the Foundation ’s day -
+	Output Confidence: 0.99804950 ; Subject: Foundation ; Object: William H. Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 75 / 82 sentences
+	Processed 80 / 82 sentences
+
+URL ( 4 / 10): https://www.thenation.com/article/society/bill-gates-philanthropy-misanthropy/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 72 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 72 sentences
+	=== Extracted Relation ===
+	Input tokens: 2023  Why Bill Gates ’s Philanthropy Is a Problem  If you learn to look past Gates ’s PR halo ,
+	Output Confidence: 0.99971360 ; Subject: Bill Gates ; Object: Philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: 2023  Why Bill Gates ’s Philanthropy Is a Problem  If you learn to look past Gates ’s PR halo ,
+	Output Confidence: 0.99978358 ; Subject: Philanthropy ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 72 sentences
+	=== Extracted Relation ===
+	Input tokens: Tim Schwab  Share  Copy Link  Facebook  X ( Twitter )
+	Output Confidence: 0.99407911 ; Subject: Tim Schwab 
+
+
+Share
+
+
+Copy ; Object: Twitter ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Tim Schwab  Share  Copy Link  Facebook  X ( Twitter )
+	Output Confidence: 0.99692613 ; Subject: Twitter ; Object: Tim Schwab 
+
+
+Share
+
+
+Copy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99908841 ; Subject: Bluesky ; Object: UN ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99964368 ; Subject: UN ; Object: Bluesky ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99966455 ; Subject: Bluesky ; Object: Sustainable Development ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99970204 ; Subject: Sustainable Development ; Object: Bluesky ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura / AFP / Getty )
+	Output Confidence: 0.99938691 ; Subject: Bluesky ; Object: Kitamura / AFP / Getty ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura / AFP / Getty )
+	Output Confidence: 0.99982750 ; Subject: Kitamura / AFP / Getty ; Object: Bluesky ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99760324 ; Subject: Bill Gates ; Object: UN ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99936026 ; Subject: UN ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99955779 ; Subject: Bill Gates ; Object: Sustainable Development ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura /
+	Output Confidence: 0.99961555 ; Subject: Sustainable Development ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura / AFP / Getty )
+	Output Confidence: 0.99921453 ; Subject: Bill Gates ; Object: Kitamura / AFP / Getty ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Bluesky  Pocket  Email  Ad Policy  Bill Gates speaks during a press conference announcing a a plan to increase awareness of the UN ’s Sustainable Development Goals.(Toshifumi Kitamura / AFP / Getty )
+	Output Confidence: 0.99976009 ; Subject: Kitamura / AFP / Getty ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 10 / 72 sentences
+	Processed 15 / 72 sentences
+	Processed 20 / 72 sentences
+	Processed 25 / 72 sentences
+	Processed 30 / 72 sentences
+	=== Extracted Relation ===
+	Input tokens: Email  By signing up , you confirm that you are over the age of 16 and agree to receive occasional promotional offers for programs that support The Nation ’s journalism .
+	Output Confidence: 0.97484314 ; Subject: Email ; Object: Nation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Email  By signing up , you confirm that you are over the age of 16 and agree to receive occasional promotional offers for programs that support The Nation ’s journalism .
+	Output Confidence: 0.99938846 ; Subject: Nation ; Object: Email ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 35 / 72 sentences
+	Processed 40 / 72 sentences
+	Processed 45 / 72 sentences
+	Processed 50 / 72 sentences
+	=== Extracted Relation ===
+	Input tokens: “ Bill Gates Should Stop Telling Africans What Kind of Agriculture Africans Need , ” noted the headline of an op - ed in Scientific American ,
+	Output Confidence: 0.99722987 ; Subject: Bill Gates ; Object: Scientific American ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: “ Bill Gates Should Stop Telling Africans What Kind of Agriculture Africans Need , ” noted the headline of an op - ed in Scientific American ,
+	Output Confidence: 0.99984157 ; Subject: Scientific American ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: authored by Million Belay and Bridget Mugambe from the Alliance for Food Sovereignty in Africa .
+	Output Confidence: 0.99643362 ; Subject: Bridget Mugambe ; Object: the Alliance for Food Sovereignty ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: authored by Million Belay and Bridget Mugambe from the Alliance for Food Sovereignty in Africa .
+	Output Confidence: 0.99910080 ; Subject: the Alliance for Food Sovereignty ; Object: Bridget Mugambe ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 55 / 72 sentences
+	Processed 60 / 72 sentences
+	Processed 65 / 72 sentences
+	=== Extracted Relation ===
+	Input tokens: This lesson has not been lost on Jeff Bezos , Mark Zuckerberg , and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.98762065 ; Subject: Jeff Bezos ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: This lesson has not been lost on Jeff Bezos , Mark Zuckerberg , and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.99982470 ; Subject: philanthropy ; Object: Jeff Bezos ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mark Zuckerberg , and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.99724555 ; Subject: Mark Zuckerberg ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mark Zuckerberg , and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.99948812 ; Subject: philanthropy ; Object: Mark Zuckerberg ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.99709010 ; Subject: Gates ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and hundreds of other billionaires who have pledged to follow in Gates ’s footsteps , turning their vast private wealth into expansive political power through philanthropy ,
+	Output Confidence: 0.99902427 ; Subject: philanthropy ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 70 / 72 sentences
+
+URL ( 5 / 10): https://academic.oup.com/ia/article/98/6/2039/6765178
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 22 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 22 sentences
+	Processed 5 / 22 sentences
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation ,
+	Output Confidence: 0.94144434 ; Subject: David Blunt ; Object: The Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation ,
+	Output Confidence: 0.99878269 ; Subject: The Gates Foundation ; Object: David Blunt ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation , global health and domination : a republican critique of transnational philanthropy ,
+	Output Confidence: 0.97724992 ; Subject: David Blunt ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation , global health and domination : a republican critique of transnational philanthropy ,
+	Output Confidence: 0.99958807 ; Subject: philanthropy ; Object: David Blunt ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation , global health and domination : a republican critique of transnational philanthropy , International Affairs ,
+	Output Confidence: 0.81202286 ; Subject: David Blunt ; Object: International Affairs ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: tables  Video  Audio  Supplementary Data  Cite  Cite  Gwilym David Blunt ,  The Gates Foundation , global health and domination : a republican critique of transnational philanthropy , International Affairs ,
+	Output Confidence: 0.99933642 ; Subject: International Affairs ; Object: David Blunt ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers ,
+	Output Confidence: 0.99869776 ; Subject: Pages 2039–2056, ; Object: Papers ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers ,
+	Output Confidence: 0.99977201 ; Subject: Papers ; Object: Pages 2039–2056, ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers , Zotero )
+	Output Confidence: 0.99865282 ; Subject: Pages 2039–2056, ; Object: Zotero ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers , Zotero )
+	Output Confidence: 0.99975806 ; Subject: Zotero ; Object: Pages 2039–2056, ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers , Zotero )  .enw ( EndNote )
+	Output Confidence: 0.99928433 ; Subject: Pages 2039–2056, ; Object: EndNote ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Pages 2039–2056 , https://doi.org/10.1093/ia/iiac022  Select Format  Select format  .ris ( Mendeley , Papers , Zotero )  .enw ( EndNote )
+	Output Confidence: 0.99983263 ; Subject: EndNote ; Object: Pages 2039–2056, ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers ,
+	Output Confidence: 0.99848431 ; Subject: Mendeley ; Object: Papers ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers ,
+	Output Confidence: 0.99729270 ; Subject: Papers ; Object: Mendeley ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers , Zotero )
+	Output Confidence: 0.99772745 ; Subject: Mendeley ; Object: Zotero ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers , Zotero )
+	Output Confidence: 0.99923098 ; Subject: Zotero ; Object: Mendeley ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers , Zotero )  .enw ( EndNote )
+	Output Confidence: 0.99827302 ; Subject: Mendeley ; Object: EndNote ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Mendeley , Papers , Zotero )  .enw ( EndNote )
+	Output Confidence: 0.99957734 ; Subject: EndNote ; Object: Mendeley ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 10 / 22 sentences
+	=== Extracted Relation ===
+	Input tokens: ( Medlars , RefWorks )
+	Output Confidence: 0.99905783 ; Subject: Medlars ; Object: RefWorks ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: ( Medlars , RefWorks )
+	Output Confidence: 0.99165887 ; Subject: RefWorks ; Object: Medlars ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Using the Bill and Melinda Gates Foundation and its role in global health as a test case ,
+	Output Confidence: 0.99958712 ; Subject: Bill ; Object: Melinda Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Using the Bill and Melinda Gates Foundation and its role in global health as a test case ,
+	Output Confidence: 0.99974161 ; Subject: Melinda Gates Foundation ; Object: Bill ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 15 / 22 sentences
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.94810486 ; Subject: Donald Trump ; Object: Congress ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.99961877 ; Subject: Congress ; Object: Donald Trump ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.97695380 ; Subject: Donald Trump ; Object: UN ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.99939787 ; Subject: UN ; Object: Donald Trump ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.97806096 ; Subject: Donald Trump ; Object: the World Health Organization ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: On 6 July 2020 President Donald Trump notified Congress and the UN that the United States was withdrawing from the World Health Organization (
+	Output Confidence: 0.99978846 ; Subject: the World Health Organization ; Object: Donald Trump ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 20 / 22 sentences
+	=== Extracted Relation ===
+	Input tokens: the Bill and Melinda Gates Foundation.1Since its incorporation , the Gates Foundation has become a major player in global health ,
+	Output Confidence: 0.96230048 ; Subject: Bill ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: the Bill and Melinda Gates Foundation.1Since its incorporation , the Gates Foundation has become a major player in global health ,
+	Output Confidence: 0.99962986 ; Subject: the Gates Foundation ; Object: Bill ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: the Bill and Melinda Gates Foundation.1Since its incorporation , the Gates Foundation has become a major player in global health ,
+	Output Confidence: 0.83478278 ; Subject: Melinda Gates ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: the Bill and Melinda Gates Foundation.1Since its incorporation , the Gates Foundation has become a major player in global health ,
+	Output Confidence: 0.99907410 ; Subject: the Gates Foundation ; Object: Melinda Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+
+URL ( 6 / 10): https://www.elliottbaybook.com/item/3Czr8TaWU9-4kpSQS8AFmw
+	Fetching text from url ...
+	Webpage length (num characters): 72
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+
+URL ( 7 / 10): https://nonprofitquarterly.org/plutocracy-bill-gates-philanthropy-washington-state/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 60 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 60 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill Gates Philanthropy , Washington State & the Nuisance of Democracy  SECTIONS 
+	Output Confidence: 0.99544132 ; Subject: Bill Gates Philanthropy ; Object: Washington State & the Nuisance of Democracy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SECTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates Philanthropy , Washington State & the Nuisance of Democracy  SECTIONS 
+	Output Confidence: 0.99150312 ; Subject: Washington State & the Nuisance of Democracy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SECTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ; Object: Bill Gates Philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , Washington State , and the Nuisance of Democracy  Joanne Barkan  April 11 ,
+	Output Confidence: 0.79404658 ; Subject: Bill Gates ; Object: the Nuisance of Democracy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , Washington State , and the Nuisance of Democracy  Joanne Barkan  April 11 ,
+	Output Confidence: 0.99736720 ; Subject: the Nuisance of Democracy ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , Washington State , and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox –
+	Output Confidence: 0.62984729 ; Subject: Bill Gates ; Object: BT ArtBox ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , Washington State , and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox –
+	Output Confidence: 0.99893671 ; Subject: BT ArtBox ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox –
+	Output Confidence: 0.97720909 ; Subject: Joanne Barkan ; Object: BT ArtBox ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox –
+	Output Confidence: 0.99882251 ; Subject: BT ArtBox ; Object: Joanne Barkan ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox – Money Box / Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.99850720 ; Subject: Joanne Barkan ; Object: Money Box / ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox – Money Box / Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.99978954 ; Subject: Money Box / ; Object: Joanne Barkan ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox – Money Box / Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.92636627 ; Subject: Joanne Barkan ; Object: the Nonprofit Quarterly’s ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and the Nuisance of Democracy  Joanne Barkan  April 11 , 2016  BT ArtBox – Money Box / Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.99959952 ; Subject: the Nonprofit Quarterly’s ; Object: Joanne Barkan ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.92318618 ; Subject: Dave Catchpole ; Object: the Nonprofit Quarterly’s ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition ,
+	Output Confidence: 0.99931657 ; Subject: the Nonprofit Quarterly’s ; Object: Dave Catchpole ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition , “ Strategic Nonprofit Management : Frameworks and Scaffolding .
+	Output Confidence: 0.98496628 ; Subject: Dave Catchpole ; Object: Strategic Nonprofit Management: ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Dave Catchpole  This article is from the  Nonprofit Quarterly ’s spring 2016 edition , “ Strategic Nonprofit Management : Frameworks and Scaffolding .
+	Output Confidence: 0.99882394 ; Subject: Strategic Nonprofit Management: ; Object: Dave Catchpole ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: think Michael Bloomberg , Bill Gates , or Walmart heiress Alice Walton .
+	Output Confidence: 0.99677902 ; Subject: Michael Bloomberg ; Object: Walmart ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: think Michael Bloomberg , Bill Gates , or Walmart heiress Alice Walton .
+	Output Confidence: 0.99943501 ; Subject: Walmart ; Object: Michael Bloomberg ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , or Walmart heiress Alice Walton .
+	Output Confidence: 0.98473132 ; Subject: Bill Gates ; Object: Walmart ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , or Walmart heiress Alice Walton .
+	Output Confidence: 0.99865544 ; Subject: Walmart ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 60 sentences
+	Processed 10 / 60 sentences
+	Processed 15 / 60 sentences
+	=== Extracted Relation ===
+	Input tokens: Washingtonians rejected charter schools decisively : 64.4 percent against , 35.6 percent in favor.1  State representatives kept trying .
+	Output Confidence: 0.68225920 ; Subject: Washingtonians ; Object: State ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Washingtonians rejected charter schools decisively : 64.4 percent against , 35.6 percent in favor.1  State representatives kept trying .
+	Output Confidence: 0.99950314 ; Subject: State ; Object: Washingtonians ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 20 / 60 sentences
+	=== Extracted Relation ===
+	Input tokens: Paul Allen had cofounded Microsoft in 1975 and The Paul G. Allen Family Foundation in 1988.3 The state places no limits on individual campaign contributions for ballot measures ,
+	Output Confidence: 0.99119067 ; Subject: Paul Allen ; Object: Microsoft ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: Paul Allen had cofounded Microsoft in 1975 and The Paul G. Allen Family Foundation in 1988.3 The state places no limits on individual campaign contributions for ballot measures ,
+	Output Confidence: 0.97775841 ; Subject: Microsoft ; Object: Paul Allen ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 25 / 60 sentences
+	Processed 30 / 60 sentences
+	Processed 35 / 60 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , who had recently made education reform the main focus of his domestic philanthropy ; Walmart heir John T. Walton (
+	Output Confidence: 0.63692719 ; Subject: Bill Gates ; Object: Walmart ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	Confidence is lower than threshold confidence. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill Gates , who had recently made education reform the main focus of his domestic philanthropy ; Walmart heir John T. Walton (
+	Output Confidence: 0.97780877 ; Subject: Walmart ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and Donald Fisher ( from California ) , founder of Gap and a major donor to the KIPP chain of charter schools.6  When philanthropists finance political campaigns ,
+	Output Confidence: 0.89654142 ; Subject: Donald Fisher ; Object: Gap ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: and Donald Fisher ( from California ) , founder of Gap and a major donor to the KIPP chain of charter schools.6  When philanthropists finance political campaigns ,
+	Output Confidence: 0.96953291 ; Subject: Gap ; Object: Donald Fisher ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and Donald Fisher ( from California ) , founder of Gap and a major donor to the KIPP chain of charter schools.6  When philanthropists finance political campaigns ,
+	Output Confidence: 0.93026221 ; Subject: Donald Fisher ; Object: KIPP ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: and Donald Fisher ( from California ) , founder of Gap and a major donor to the KIPP chain of charter schools.6  When philanthropists finance political campaigns ,
+	Output Confidence: 0.90461951 ; Subject: KIPP ; Object: Donald Fisher ;
+	Current relation:  org:founded_by
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 40 / 60 sentences
+	Processed 45 / 60 sentences
+	Processed 50 / 60 sentences
+	=== Extracted Relation ===
+	Input tokens: Allen had a net worth of $ 17.8 billion , Gates had a net worth of $ 76 billion ,
+	Output Confidence: 0.99267250 ; Subject: Allen ; Object: Gates ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: Allen had a net worth of $ 17.8 billion , Gates had a net worth of $ 76 billion ,
+	Output Confidence: 0.87097114 ; Subject: Gates ; Object: Allen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 55 / 60 sentences
+
+URL ( 8 / 10): https://thegivingreview.com/the-bill-gates-and-big-philanthropy-problems-and-ours/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 51 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 51 sentences
+	=== Extracted Relation ===
+	Input tokens: and ours  Michael E. Hartmann  Mar 18 , 2024  Bill Gates visits the European Commission in 2023 (
+	Output Confidence: 0.99088472 ; Subject: Michael E. Hartmann ; Object: the European Commission ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and ours  Michael E. Hartmann  Mar 18 , 2024  Bill Gates visits the European Commission in 2023 (
+	Output Confidence: 0.99913555 ; Subject: the European Commission ; Object: Michael E. Hartmann ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and ours  Michael E. Hartmann  Mar 18 , 2024  Bill Gates visits the European Commission in 2023 ( Wikimedia Commons )
+	Output Confidence: 0.99915123 ; Subject: Michael E. Hartmann ; Object: Wikimedia Commons ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and ours  Michael E. Hartmann  Mar 18 , 2024  Bill Gates visits the European Commission in 2023 ( Wikimedia Commons )
+	Output Confidence: 0.99956053 ; Subject: Wikimedia Commons ; Object: Michael E. Hartmann ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Very - moneyed Bill Gates himself is also a problem , as is his philanthropy — institutionally , in the form of the Bill and Melinda Gates Foundation and as practiced by it and its many related entities —
+	Output Confidence: 0.99967062 ; Subject: Bill Gates ; Object: Melinda Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Very - moneyed Bill Gates himself is also a problem , as is his philanthropy — institutionally , in the form of the Bill and Melinda Gates Foundation and as practiced by it and its many related entities —
+	Output Confidence: 0.99987745 ; Subject: Melinda Gates Foundation ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: in the form of the Bill and Melinda Gates Foundation and as practiced by it and its many related entities —
+	Output Confidence: 0.99956292 ; Subject: Bill ; Object: Melinda Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: in the form of the Bill and Melinda Gates Foundation and as practiced by it and its many related entities —
+	Output Confidence: 0.99975783 ; Subject: Melinda Gates Foundation ; Object: Bill ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 51 sentences
+	=== Extracted Relation ===
+	Input tokens: Gates personally and the Gates Foundation ,
+	Output Confidence: 0.99876487 ; Subject: Gates ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Gates personally and the Gates Foundation ,
+	Output Confidence: 0.99941015 ; Subject: the Gates Foundation ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Schwab is an investigative journalist whose work has appeared in  The Nation  and the  Columbia Journalism Review ,
+	Output Confidence: 0.99405068 ; Subject: Schwab ; Object: Columbia Journalism Review ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: Schwab is an investigative journalist whose work has appeared in  The Nation  and the  Columbia Journalism Review ,
+	Output Confidence: 0.97216547 ; Subject: Columbia Journalism Review ; Object: Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 10 / 51 sentences
+	=== Extracted Relation ===
+	Input tokens: and his problem with Gates and the Gates Foundation is ,
+	Output Confidence: 0.99966896 ; Subject: Gates ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: and his problem with Gates and the Gates Foundation is ,
+	Output Confidence: 0.99947661 ; Subject: the Gates Foundation ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Schwab ’s Gates problem and the larger ,
+	Output Confidence: 0.99977368 ; Subject: Schwab ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Schwab ’s Gates problem and the larger ,
+	Output Confidence: 0.99955720 ; Subject: Gates ; Object: Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 15 / 51 sentences
+	Processed 20 / 51 sentences
+	=== Extracted Relation ===
+	Input tokens: In Schwab ’s journalistically damning indictment of a book , for instance , he describes the Gates Foundation as —
+	Output Confidence: 0.99963129 ; Subject: Schwab ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: In Schwab ’s journalistically damning indictment of a book , for instance , he describes the Gates Foundation as —
+	Output Confidence: 0.99980253 ; Subject: the Gates Foundation ; Object: Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: “ One reason Bill Gates has made health and medicine the central focus of his philanthropy is that this body of work allows him to draw so heavily on his experience at Microsoft ,
+	Output Confidence: 0.99867958 ; Subject: Bill Gates ; Object: Microsoft ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: “ One reason Bill Gates has made health and medicine the central focus of his philanthropy is that this body of work allows him to draw so heavily on his experience at Microsoft ,
+	Output Confidence: 0.99968898 ; Subject: Microsoft ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 25 / 51 sentences
+	=== Extracted Relation ===
+	Input tokens: according to Schwab , and it makes hundreds of millions of dollars in charitable gifts directly to for - profit pharmaceutical companies “ in which the foundation ’s endowment reported holding stocks and bonds , like Merck ,
+	Output Confidence: 0.99970955 ; Subject: Schwab ; Object: Merck ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: according to Schwab , and it makes hundreds of millions of dollars in charitable gifts directly to for - profit pharmaceutical companies “ in which the foundation ’s endowment reported holding stocks and bonds , like Merck ,
+	Output Confidence: 0.99983490 ; Subject: Merck ; Object: Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: according to Schwab , and it makes hundreds of millions of dollars in charitable gifts directly to for - profit pharmaceutical companies “ in which the foundation ’s endowment reported holding stocks and bonds , like Merck , Pfizer ,
+	Output Confidence: 0.99961203 ; Subject: Schwab ; Object: Pfizer ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: according to Schwab , and it makes hundreds of millions of dollars in charitable gifts directly to for - profit pharmaceutical companies “ in which the foundation ’s endowment reported holding stocks and bonds , like Merck , Pfizer ,
+	Output Confidence: 0.99966609 ; Subject: Pfizer ; Object: Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 30 / 51 sentences
+	Processed 35 / 51 sentences
+	Processed 40 / 51 sentences
+	Processed 45 / 51 sentences
+	Processed 50 / 51 sentences
+
+URL ( 9 / 10): https://www.ft.com/content/24ecb1b2-4c03-11e9-bbc9-6917dce3dc62
+	Fetching text from url ...
+	Webpage length (num characters): 6919
+	Annotating the webpage using spacy...
+	Extracted 31 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 31 sentences
+	=== Extracted Relation ===
+	Input tokens: executive bonusesTop US vaccine official resigns over Kennedy ’s ‘ misinformation and lies ’ China to review BlackRock ’s deal to buy Panama Canal
+	Output Confidence: 0.99980849 ; Subject: Kennedy ; Object: BlackRock ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: executive bonusesTop US vaccine official resigns over Kennedy ’s ‘ misinformation and lies ’ China to review BlackRock ’s deal to buy Panama Canal
+	Output Confidence: 0.99988961 ; Subject: BlackRock ; Object: Kennedy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 31 sentences
+	=== Extracted Relation ===
+	Input tokens: but it ’s adults who need educatingThe perils of capitulating to Donald TrumpThe perfect palliative balm of Grey ’s AnatomyLexWork & CareersSectionsWork & Careers HomeBusiness School
+	Output Confidence: 0.99937385 ; Subject: Donald TrumpThe ; Object: Grey’s AnatomyLexWork & CareersSectionsWork & Careers HomeBusiness School ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: but it ’s adults who need educatingThe perils of capitulating to Donald TrumpThe perfect palliative balm of Grey ’s AnatomyLexWork & CareersSectionsWork & Careers HomeBusiness School
+	Output Confidence: 0.99989617 ; Subject: Grey’s AnatomyLexWork & CareersSectionsWork & Careers HomeBusiness School ; Object: Donald TrumpThe ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: diversity orderGlass Lewis criticises Goldman ’s ‘ egregious ’ executive bonusesUS regulator to investigate Disney over diversity initiatives How Europe can make it easier for start -
+	Output Confidence: 0.99984705 ; Subject: Goldman ; Object: Disney ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: diversity orderGlass Lewis criticises Goldman ’s ‘ egregious ’ executive bonusesUS regulator to investigate Disney over diversity initiatives How Europe can make it easier for start -
+	Output Confidence: 0.99989533 ; Subject: Disney ; Object: Goldman ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: diversity orderGlass Lewis criticises Goldman ’s ‘ egregious ’ executive bonusesUS regulator to investigate Disney over diversity initiatives How Europe can make it easier for start - ups to scaleLife & ArtsSectionsLife & Arts HomeArtsBooksFood & DrinkFT MagazineHouse &
+	Output Confidence: 0.99964786 ; Subject: Goldman ; Object: scaleLife & ArtsSectionsLife & Arts HomeArtsBooksFood & ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: diversity orderGlass Lewis criticises Goldman ’s ‘ egregious ’ executive bonusesUS regulator to investigate Disney over diversity initiatives How Europe can make it easier for start - ups to scaleLife & ArtsSectionsLife & Arts HomeArtsBooksFood & DrinkFT MagazineHouse &
+	Output Confidence: 0.99985206 ; Subject: scaleLife & ArtsSectionsLife & Arts HomeArtsBooksFood & ; Object: Goldman ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 10 / 31 sentences
+	Processed 15 / 31 sentences
+	Processed 20 / 31 sentences
+	Processed 25 / 31 sentences
+	=== Extracted Relation ===
+	Input tokens: SecuritySocial MediaMarketsShow more MarketsAlphavilleMarkets DataCryptoCapital MarketsCommoditiesCurrenciesEquitiesWealth ManagementMoral MoneyETF HubFund ManagementTradingClimateOpinionShow more OpinionColumnistsThe FT ViewThe Big ReadLexObituariesLettersLexWork & CareersShow more Work & CareersBusiness School
+	Output Confidence: 0.99933583 ; Subject: MarketsAlphavilleMarkets ; Object: Work & CareersBusiness School ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: SecuritySocial MediaMarketsShow more MarketsAlphavilleMarkets DataCryptoCapital MarketsCommoditiesCurrenciesEquitiesWealth ManagementMoral MoneyETF HubFund ManagementTradingClimateOpinionShow more OpinionColumnistsThe FT ViewThe Big ReadLexObituariesLettersLexWork & CareersShow more Work & CareersBusiness School
+	Output Confidence: 0.99985158 ; Subject: Work & CareersBusiness School ; Object: MarketsAlphavilleMarkets ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 30 / 31 sentences
+
+URL ( 10 / 10): https://politics-prose.com/event/2024-02-02/tim-schwab-amy-schiller-bill-gates-problem-price-humanity-bella-devaan-wharf
+	Fetching text from url ...
+	Webpage length (num characters): 8261
+	Annotating the webpage using spacy...
+	Extracted 41 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity -
+	Output Confidence: 0.99700987 ; Subject: Amy Schiller ; Object: The Bill Gates Problem & ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity -
+	Output Confidence: 0.99966192 ; Subject: The Bill Gates Problem & ; Object: Amy Schiller ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 5 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity -
+	Output Confidence: 0.99700987 ; Subject: Amy Schiller ; Object: The Bill Gates Problem & ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity -
+	Output Confidence: 0.99966192 ; Subject: The Bill Gates Problem & ; Object: Amy Schiller ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity - with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.96973205 ; Subject: Amy Schiller ; Object: The Wharf
+      
+
+Join ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity - with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.99958783 ; Subject: The Wharf
+      
+
+Join ; Object: Amy Schiller ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity - with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.99795604 ; Subject: Amy Schiller ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Amy Schiller — The Bill Gates Problem & The Price of Humanity - with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.99979860 ; Subject: philanthropy ; Object: Amy Schiller ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.96169227 ; Subject: Bella DeVaan ; Object: The Wharf
+      
+
+Join ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.99926847 ; Subject: The Wharf
+      
+
+Join ; Object: Bella DeVaan ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.97911602 ; Subject: Bella DeVaan ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: with Bella DeVaan —  at The Wharf  Join us for a discussion on the state of philanthropy with Tim Schwab and Amy Schiller !
+	Output Confidence: 0.99966431 ; Subject: philanthropy ; Object: Bella DeVaan ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: But as Tim Schwab shows in this fearless investigation , Gates is still exactly who he was at Microsoft :
+	Output Confidence: 0.99872631 ; Subject: Tim Schwab ; Object: Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: But as Tim Schwab shows in this fearless investigation , Gates is still exactly who he was at Microsoft :
+	Output Confidence: 0.99954957 ; Subject: Gates ; Object: Tim Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: But as Tim Schwab shows in this fearless investigation , Gates is still exactly who he was at Microsoft :
+	Output Confidence: 0.98794693 ; Subject: Tim Schwab ; Object: Microsoft ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: But as Tim Schwab shows in this fearless investigation , Gates is still exactly who he was at Microsoft :
+	Output Confidence: 0.99933100 ; Subject: Microsoft ; Object: Tim Schwab ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 10 / 41 sentences
+	Processed 15 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Bill and Melinda Gates , Warren Buffet ,
+	Output Confidence: 0.99577361 ; Subject: Bill ; Object: Warren Buffet ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill and Melinda Gates , Warren Buffet ,
+	Output Confidence: 0.99844033 ; Subject: Warren Buffet ; Object: Bill ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill and Melinda Gates , Warren Buffet ,
+	Output Confidence: 0.97601670 ; Subject: Melinda Gates ; Object: Warren Buffet ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bill and Melinda Gates , Warren Buffet ,
+	Output Confidence: 0.97582668 ; Subject: Warren Buffet ; Object: Melinda Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 20 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Schiller argues that philanthropy can no longer be premised around basic survival .
+	Output Confidence: 0.99981445 ; Subject: Schiller ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Schiller argues that philanthropy can no longer be premised around basic survival .
+	Output Confidence: 0.99948251 ; Subject: philanthropy ; Object: Schiller ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 25 / 41 sentences
+	Processed 30 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Bella DeVaan is the Program Associate for Inequality.org and a member of its Charity Reform Initiative .
+	Output Confidence: 0.99619496 ; Subject: Bella DeVaan ; Object: Inequality.org ;
+	Current relation:  per:employee_of
+	Adding to set of extracted relations
+	==========
+	=== Extracted Relation ===
+	Input tokens: Bella DeVaan is the Program Associate for Inequality.org and a member of its Charity Reform Initiative .
+	Output Confidence: 0.98776859 ; Subject: Inequality.org ; Object: Bella DeVaan ;
+	Current relation:  org:top_members/employees
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 35 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens: Choice A powerful investigation of Bill Gates and the Gates Foundation ,
+	Output Confidence: 0.99962091 ; Subject: Bill Gates ; Object: the Gates Foundation ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Choice A powerful investigation of Bill Gates and the Gates Foundation ,
+	Output Confidence: 0.99976557 ; Subject: the Gates Foundation ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Choice A powerful investigation of Bill Gates and the Gates Foundation , showing how he uses philanthropy to exercise enormous political power without accountability Through his vaunted philanthropy ,
+	Output Confidence: 0.99707580 ; Subject: Bill Gates ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: Choice A powerful investigation of Bill Gates and the Gates Foundation , showing how he uses philanthropy to exercise enormous political power without accountability Through his vaunted philanthropy ,
+	Output Confidence: 0.99979633 ; Subject: philanthropy ; Object: Bill Gates ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: — Tobias Carroll , InsideHook An attempt to rescue philanthropy from its progressive decline into vanity projects that drive wealth inequality ,
+	Output Confidence: 0.99924964 ; Subject: Tobias Carroll ; Object: philanthropy ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: — Tobias Carroll , InsideHook An attempt to rescue philanthropy from its progressive decline into vanity projects that drive wealth inequality ,
+	Output Confidence: 0.99965382 ; Subject: philanthropy ; Object: Tobias Carroll ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	Processed 40 / 41 sentences
+	=== Extracted Relation ===
+	Input tokens:  Upcoming Event  Mar  30  Clay Risen — Red Scare : Blacklists , McCarthyism , and the Making of Modern America -
+	Output Confidence: 0.99872071 ; Subject: Clay Risen ; Object: the Making of Modern America ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens:  Upcoming Event  Mar  30  Clay Risen — Red Scare : Blacklists , McCarthyism , and the Making of Modern America -
+	Output Confidence: 0.99968541 ; Subject: the Making of Modern America ; Object: Clay Risen ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: McCarthyism , and the Making of Modern America -
+	Output Confidence: 0.99870169 ; Subject: McCarthyism ; Object: the Making of Modern America ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+	=== Extracted Relation ===
+	Input tokens: McCarthyism , and the Making of Modern America -
+	Output Confidence: 0.99746680 ; Subject: the Making of Modern America ; Object: McCarthyism ;
+	Current relation:  no_relation
+	Relation is not the target relation. Ignoring this.
+	==========
+
+	Extracted annotations for 9 out of total 41 sentences
+	Relations extracted from this website: 1 (Overall: 21)
+
+================== ALL RELATIONS for per:employee_of ( 10 ) =================
+Confidence: 0.9976720 		| Subject: Gates 		| Object: Microsoft
+Confidence: 0.9974706 		| Subject: Gates 		| Object: Berkshire Hathaway
+Confidence: 0.9968373 		| Subject: Bill Gates 		| Object: Microsoft
+Confidence: 0.9963520 		| Subject: Warren Buffett’s 		| Object: Berkshire Hathaway
+Confidence: 0.9962741 		| Subject: Bill 		| Object: Foundation
+Confidence: 0.9961950 		| Subject: Bella DeVaan 		| Object: Inequality.org
+Confidence: 0.9940507 		| Subject: Schwab 		| Object: Columbia Journalism Review
+Confidence: 0.9936714 		| Subject: Satya Nadella 		| Object: Skype
+Confidence: 0.9926725 		| Subject: Allen 		| Object: Gates
+Confidence: 0.9911907 		| Subject: Paul Allen 		| Object: Microsoft
+Total # of iterations = 2
