@@ -1,6 +1,6 @@
 # Imports
 import google.generativeai as genai
-
+import time
 # Apply Gemini API Key
 GEMINI_API_KEY = 'AIzaSyBDkYccGdkn3-z4L_spz7bzsjmBaWToHAw'  # Substitute your own key here
 genai.configure(api_key=GEMINI_API_KEY)
@@ -17,6 +17,7 @@ def get_gemini_completion(prompt, model_name="gemini-2.0-flash", max_tokens=200,
         top_p=top_p,
         top_k=top_k
     )
+    time.sleep(5)
 
     # Generate a response
     response = model.generate_content(prompt, generation_config=generation_config)
@@ -38,6 +39,6 @@ extracted:"""
     top_k = 32
 
     response_text = get_gemini_completion(prompt_text, model_name, max_tokens, temperature, top_p, top_k)
-    print(response_text)
+    # print(response_text)
 
 main()
