@@ -7,6 +7,7 @@ from spacy_help_functions import get_entities, create_entity_pairs
 from gemini_helper_6111 import get_gemini_completion
 import json
 from googleapiclient.discovery import build
+import re
 
 entities_of_interest = ["ORGANIZATION", "PERSON", "LOCATION", "CITY", "STATE_OR_PROVINCE", "COUNTRY"]
 GOOGLE_API_KEY = "AIzaSyCbvJbYa8AKkBHDd5efd63Ksdd6TfxcojE"
@@ -30,27 +31,30 @@ def send_query(query):
         # pprint.pprint(res)
         return res['items']
 
-def is_valid_entity(subj_type, obj_type, relation_id):
-    # filter out entity pairs that don't contain named entities
-    # of the right type for the target relation of interest r
-    if relation_id == "1":  # Schools_Attended: (PERSON, ORGANIZATION)
+def is_valid_sentence(entities, relation_id):
+    entity_types = {etype for _, etype in entities}
+    if relation_id in ["1", "2", "4"]:
+        return {"PERSON", "ORGANIZATION"}.issubset(entity_types)
+    elif relation_id == "3":
+        return "PERSON" in entity_types and entity_types.intersection({"LOCATION", "CITY", "STATE_OR_PROVINCE", "COUNTRY"})
+    return False
+
+def is_valid_entity_pair(subj_type, obj_type, relation_id):
+    if relation_id in ["1", "2"]:
         return subj_type == "PERSON" and obj_type == "ORGANIZATION"
-    if relation_id == "2":  # Work_For: (PERSON, ORGANIZATION)
-        return subj_type == "PERSON" and obj_type == "ORGANIZATION"
-    if relation_id == "3":  # Live_In: (PERSON, LOCATION-like)
+    elif relation_id == "3":
         return subj_type == "PERSON" and obj_type in ["LOCATION", "CITY", "STATE_OR_PROVINCE", "COUNTRY"]
-    if relation_id == "4":  # Top_Member_Employees: (ORGANIZATION, PERSON)
+    elif relation_id == "4":
         return subj_type == "ORGANIZATION" and obj_type == "PERSON"
     return False
 
 def main():
     # gemini_api_key = sys.argv[3]
-    option = sys.argv[4] # spanbert or gemini 
-
-    r = sys.argv[5] # which relation to extract from
-    t = float(sys.argv[6]) # confidence threshold, ignored if using gemini
-    q = sys.argv[7] # seed query
-    k = int(sys.argv[8]) # number of tuples to return
+    option = sys.argv[1] # spanbert or gemini 
+    r = sys.argv[2] # which relation to extract from
+    t = float(sys.argv[3]) # confidence threshold, ignored if using gemini
+    q = sys.argv[4] # seed query
+    k = int(sys.argv[5]) # number of tuples to return
 
     # Load spacy model
     nlp = spacy.load("en_core_web_lg") 
@@ -103,15 +107,14 @@ def main():
             if url in processed_urls:
                 print(f"URL {url} already processed. Skipping.")
                 continue
-            print(f"\nURL ( {idx+1} / {len(urls)}): {url}")
-            print("\tFetching text from url ...")
-
-            if url not in processed_urls:
+            else: 
+                print(f"\nURL ( {idx+1} / {len(urls)}): {url}")
+                print("\tFetching text from url ...")
                 response = requests.get(url)
                 if response.status_code != 200:
                     print(f"\tUnable to fetch URL. Skipping.")
                     continue
-                if response.status_code == 200:
+                else: 
                     # 3.b. Extract the actual plain text from the webpage using Beautiful Soup.
                     soup = BeautifulSoup(response.text, 'html.parser')
                     text = soup.get_text()
@@ -147,10 +150,14 @@ def main():
                             required_types = {"ORGANIZATION", "PERSON"}
 
                         ents = get_entities(sentence, entities_of_interest)
+                        if not is_valid_sentence(ents, r):
+                            continue
+                        """
                         entity_types = {etype for _, etype in ents}
                         if required_types and not required_types.issubset(entity_types):
-                            print("Sentence does not contain the required entity types. Skipping.")
+                            # print("Sentence does not contain the required entity types. Skipping.")
                             continue
+                        """
 
                         # 3.e.i If -spanbertis specified, use the sentences and named entity pairs as input to SpanBERT 
                         # to predict the corresponding relations, and extract all instances of the relation specified by input parameter r. 
@@ -162,7 +169,7 @@ def main():
                             subj = ep[1]
                             obj = ep[2]
                             # TODO: keep subject-object pairs of the right type for the target relation (e.g., Person:Organization for the "Work_For" relation)
-                            if is_valid_entity(subj[1], obj[1], r):
+                            if is_valid_entity_pair(subj[1], obj[1], r):
                                 candidate_pairs.append({"tokens": tokens, "subj": subj, "obj": obj})
                                 candidate_pairs.append({"tokens": tokens, "subj": obj, "obj": subj})
                         if not candidate_pairs:
@@ -181,14 +188,13 @@ def main():
                                 print("\t=== Extracted Relation ===")
                                 print("\tInput tokens:", " ".join(token.strip() for token in ex["tokens"]))
                                 print(f"\tOutput Confidence: {confidence:.8f} ; Subject: {subj_text} ; Object: {obj_text} ;")
-
+                                print("\tCurrent relation: ", relation)
                                 if relation == target_relation and confidence >= t:
                                     print("\tAdding to set of extracted relations")
                                     print("\t==========")
                                     X.add((subj_text, relation, obj_text, confidence))
                                 else:
                                     if relation != target_relation:
-                                        print("\tCurrent relation: ", relation)
                                         print("\tRelation is not the target relation. Ignoring this.")
                                     if confidence < t:
                                         print("\tConfidence is lower than threshold confidence. Ignoring this.")
@@ -200,6 +206,12 @@ def main():
                         # (we do not receive extraction confidence values from the Google Gemini API, 
                         # so feel free to hard-code in a value of 1.0 for the confidence value for all Gemini-extracted tuples).
                         elif option == "-gemini":
+                            ents = get_entities(sentence, entities_of_interest)
+                            
+                            if not is_valid_sentence(ents, r):
+                                print("No match found.")
+                                continue  # Skip irrelevant sentences
+                            
                             confidence = 1.0
                             model_name = "gemini-2.0-flash"
                             max_tokens = 100
@@ -207,102 +219,135 @@ def main():
                             top_p = 1
                             top_k = 32
 
-                            prompt_text = "identify the relations and return it as a tuple."
-                            # f"Given a sentence, extract all relations for the target relation.\n"
+                            prompt_text = "Given a sentence, identify the relations for the target relation, " \
+                            "and return it as a tuple."
                             
                             if r == "1":
-                                prompt_text += "Relation: Schools_Attended\nSubject: PERSON, Object: ORGANIZATION\n"
+                                prompt_text += ("Relation: Schools_Attended\nSubject: PERSON, Object: ORGANIZATION\n "
+                                "for example: (bill gates, Schools_Attended, harvard university)"
+                                "Please extract the full names, such as Paul Allen, instead of just Allen. Do not include any punctuations."
+                                "Please make sure the subject is the person's name, not an organization or location."
+                                "Please make sure the object is the school that the person actually goes to (please fact check this), not anything else like their workplace or wikipedia."
+                                "Please make sure to extract the full name of the school. Please avoid anything not meaningful, such as 'the', 'a', 'an', or None etc."
+                                )
                             elif r == "2":
-                                prompt_text += "Relation: Work_For\nSubject: PERSON, Object: ORGANIZATION\n"
+                                prompt_text += (
+                                    "Relation: Work_For\n"
+                                    "Subject: PERSON, Object: ORGANIZATION\n"
+                                    "for example: (sundar pichai, Work_For, google), (Elon Musk, Work_For, Tesla). "
+                                    "Please extract the full names, such as Paul Allen, instead of just Allen. Do not include any punctuations."
+                                    "Please make sure the object is a company that the person actually works for (please fact check this), not anything else like their Alma Mater or wikipedia."
+                                    "Please make sure to extract the full name of the organization. Please avoid anything not meaningful, such as 'the', 'a', 'an', or None etc."
+                                    )
                             elif r == "3":
-                                prompt_text += "Relation: Live_In\nSubject: PERSON, Object: LOCATION\n"
+                                prompt_text += ("Relation: Live_In\nSubject: PERSON, Object: LOCATION\n "
+                                "for example: (elon musk, Live_In, california)"
+                                "Please make sure the object is a location. "
+                                "Please make sure to extract the full name of the person and the location. Please avoid anything not meaningful, such as 'the', 'a', 'an', or None etc."
+                                )
                             elif r == "4":
-                                prompt_text += "Relation: Top_Member_Employees\nSubject: ORGANIZATION, Object: PERSON\n"
-                            """
+                                prompt_text += ("Relation: Top_Member_Employees\nSubject: ORGANIZATION, Object: PERSON\n "
+                                "for example: (google, Top_Member_Employees, sundar pichai)"
+                                "Please make sure the subject is an organization. and the object is a person"
+                                "Please make sure to extract the full name of the person and the organization. Please avoid anything not meaningful, such as 'the', 'a', 'an', or None etc."
+                                )
                             prompt_text += (
-                                    "Return the answer as a JSON array of triples [subject, relation, object]. "
-                                    "If no relation is found, return an empty JSON array [].\n"
-                            )"""
-                            prompt_text += (
-                                    "return the relation as a tuple.\n for example: (sundar pichai, google)"
+                                    "return the relation as a tuple.\n "
+                                    "Do not return anything other than this tuple."
+                                    f"Sentence: {sentence.text.strip()}"
                             )
-                            prompt_text += f"Sentence: {sentence.text.strip()}"
                             
 
                             response_text = get_gemini_completion(prompt_text, model_name, max_tokens, temperature, top_p, top_k)
-                            print("Gemini API response:", response_text)
+
+                            # print("Gemini API response:", response_text)
+                            pattern = r"\(\s*(.*?),\s*(.*?),\s*(.*?)\s*\)"
+                            match = re.match(pattern, response_text)
+                            if match:
+                                subj, rel, obj = match.groups()
+                                # print(match.groups())
+                                if subj != "None" and obj != "None":
+                                    print(f"Extracted relation: {subj} {rel} {obj}")
+                                    X.add((subj, rel, obj, 1.0))
+                                # print("Subject:", subj)
+                                # print("Relation:", rel)
+                                # print("Object:", obj)
+                            else:
+                                print("No match found.")
+                            """
                             try:
-                                data = json.loads(response_text)
+                                # data = json.loads(response_text)
                             except json.decoder.JSONDecodeError as e:
                                 print("JSONDecodeError:", e)
                                 print("Skipping this sentence due to invalid JSON response.")
-                                continue
-                            for subj, rel, obj in json.loads(response_text):
-                                X.add((subj, rel, obj, 1.0))
+                                continue"
+                            """
 
                             print(response_text)
-            # After processing all sentences in the URL
-            relations_from_url = len(X) - count_before
-            print(f"\n\tExtracted annotations for {sentences_with_annotation} out of total {len(sentences)} sentences")
-            print(f"\tRelations extracted from this website: {relations_from_url} (Overall: {len(X)})")
+        # After processing all sentences in the URL
+        relations_from_url = len(X) - count_before
+        print(f"\n\tExtracted annotations for {sentences_with_annotation} out of total {len(sentences)} sentences")
+        print(f"\tRelations extracted from this website: {relations_from_url} (Overall: {len(X)})")
 
 
-            # 4. Remove exact duplicates from set X: if X contains tuples that are identical to each other, 
-            # keep only the copy that has the highest extraction confidence (if -spanbert is specified) and 
-            # remove from X the duplicate copies. (You do not need to remove approximate duplicates, for simplicity.)
-            X_dict = dict() # key: triple tuples; value: confidence
-            for subj, rel, obj, confidence in X:
+        # 4. Remove exact duplicates from set X: if X contains tuples that are identical to each other, 
+        # keep only the copy that has the highest extraction confidence (if -spanbert is specified) and 
+        # remove from X the duplicate copies. (You do not need to remove approximate duplicates, for simplicity.)
+        X_dict = dict() # key: triple tuples; value: confidence
+        for subj, rel, obj, confidence in X:
+            key = (subj, rel, obj)
+            if key not in X_dict or confidence > X_dict[key]:
+                X_dict[key] = confidence
+
+        X_deduplicated = [(subj, rel, obj, confidence) for (subj, rel, obj), confidence in X_dict.items()]
+
+        # 5. If X contains at least k tuples, return the top-k such tuples and stop. 
+        # If -spanbert is specified, your output should have the tuples sorted in decreasing order by extraction confidence, 
+        # together with the extraction confidence of each tuple. 
+        if len(X_deduplicated) >= k:
+            if option == "-spanbert":
+                X_final = sorted(X_deduplicated, key=lambda x: x[3], reverse=True)[:k]
+            elif option == "-gemini":
+                # If -gemini is specified, your output can have the tuples in any order 
+                # (if you have more than k tuples, then you can return an arbitrary subset of k tuples). 
+                # (Alternatively, you can return all of the tuples in X, not just the top-k such tuples; 
+                # # this is what the reference implementation does.)
+                X_final = X_deduplicated
+            print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_final)} ) =================")
+            for i, (subj, rel, obj, conf) in enumerate(X_final):
+                print(f"Confidence: {conf:.7f} \t\t| Subject: {subj} \t\t| Object: {obj}")
+            print("Total # of iterations =", iteration)
+            return
+
+        # 6. Otherwise, select from X a tuple y such that 
+        # (1) y has not been used for querying yet and 
+        # (2) if -spanbert is specified, y has an extraction confidence that is highest among the tuples in X that have not yet been used for querying. 
+        # (You can break ties arbitrarily.) 
+        # Create a query q from tuple y by just concatenating the attribute values together, and go to Step 2. 
+        # If no such y tuple exists, then stop. (ISE has "stalled" before retrieving k high-confidence tuples.)
+        else: 
+            X_sorted = sorted(X, key=lambda x: x[3], reverse=True)
+            next_query_tuple = None
+            for y in X_sorted:
+                subj, rel, obj, confidence = y
+                print("y:", y)
+                print("used_queries:", used_queries)
                 key = (subj, rel, obj)
-                if key not in X_dict or confidence > X_dict[key]:
-                    X_dict[key] = confidence
-
-            X_deduplicated = [(subj, rel, obj, confidence) for (subj, rel, obj), confidence in X_dict.items()]
-
-            # 5. If X contains at least k tuples, return the top-k such tuples and stop. 
-            # If -spanbert is specified, your output should have the tuples sorted in decreasing order by extraction confidence, 
-            # together with the extraction confidence of each tuple. 
-            if len(X_deduplicated) >= k:
-                if option == "-spanbert":
-                    X_final = sorted(X_deduplicated, key=lambda x: x[3], reverse=True)[:k]
-                elif option == "-gemini":
-                    # If -gemini is specified, your output can have the tuples in any order 
-                    # (if you have more than k tuples, then you can return an arbitrary subset of k tuples). 
-                    # (Alternatively, you can return all of the tuples in X, not just the top-k such tuples; 
-                    # # this is what the reference implementation does.)
-                    X_final = X_deduplicated
-                print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_final)} ) =================")
-                for i, (subj, rel, obj, conf) in enumerate(X_final):
+                if key not in used_queries:
+                    next_query_tuple = key
+                    used_queries.add(next_query_tuple)
+                    break
+            if next_query_tuple is None:
+                print("ISE has stalled. No more new tuples to query.")
+                # X_deduplicated = [(subj, rel, obj, conf) for (subj, rel, obj), conf in X_dict.items()]
+                print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_sorted)} ) =================")
+                for i, (subj, rel, obj, conf) in enumerate(X_sorted):
                     print(f"Confidence: {conf:.7f} \t\t| Subject: {subj} \t\t| Object: {obj}")
                 print("Total # of iterations =", iteration)
                 return
 
-            # 6. Otherwise, select from X a tuple y such that 
-            # (1) y has not been used for querying yet and 
-            # (2) if -spanbert is specified, y has an extraction confidence that is highest among the tuples in X that have not yet been used for querying. 
-            # (You can break ties arbitrarily.) 
-            # Create a query q from tuple y by just concatenating the attribute values together, and go to Step 2. 
-            # If no such y tuple exists, then stop. (ISE has "stalled" before retrieving k high-confidence tuples.)
-            else: 
-                X_sorted = sorted(X, key=lambda x: x[3], reverse=True)
-                next_query_tuple = None
-                for y in X_sorted:
-                    subj, rel, obj, confidence = y
-                    key = (subj, rel, obj)
-                    if key not in used_queries:
-                        next_query_tuple = y
-                        used_queries.add(key)
-                        break
-                if next_query_tuple is None:
-                    print("ISE has stalled. No more new tuples to query.")
-                    X_deduplicated = [(subj, rel, obj, conf) for (subj, rel, obj), conf in X_dict.items()]
-                    print("\n================== ALL RELATIONS for", target_relation, f"( {len(X_deduplicated)} ) =================")
-                    for i, (subj, rel, obj, conf) in enumerate(X_deduplicated):
-                        print(f"Confidence: {conf:.7f} \t\t| Subject: {subj} \t\t| Object: {obj}")
-                    print("Total # of iterations =", iteration)
-                    return
+            subj, rel, obj = next_query_tuple
+            q = f"{subj} {obj}"
 
-                subj, rel, obj, confidence = next_query_tuple
-                q = f"{subj} {obj}"
-    
 if __name__ == "__main__":
     main()

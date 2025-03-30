@@ -1,0 +1,398 @@
+Loading pre-trained spanBERT from ./pretrained_spanbert
+Loading pre-trained spanBERT from ./pretrained_spanbert
+
+____
+Parameters:
+Client key	= AIzaSyCbvJbYa8AKkBHDd5efd63Ksdd6TfxcojE
+Engine key	= c33c1185e479a47da
+Gemini key	= AIzaSyBDkYccGdkn3-z4L_spz7bzsjmBaWToHAw
+Method		= gemini
+Relation	= Work_For
+Threshold	= 0.7
+Query		= bill gates microsoft
+# of Tuples	= 10
+Loading necessary libraries; This should take a minute or so ...
+
+=========== Iteration: 0 - Query: bill gates microsoft ===========
+
+
+URL ( 1 / 10): https://en.wikipedia.org/wiki/Bill_Gates
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 37 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 37 sentences
+Extracted relation: Bill Gates Work_For Microsoft
+(Bill Gates, Work_For, Microsoft)
+	Processed 5 / 37 sentences
+	Processed 10 / 37 sentences
+Extracted relation: Bill Gates Work_For Microsoft
+(Bill Gates, Work_For, Microsoft)
+(Bill Gates, Work_For, Cascade Investment)
+(Bill Gates, Work_For, Branded Entertainment Network)
+(Bill Gates, Work_For, TerraPower)
+(Bill Gates, Work_For, Gates Ventures)
+Extracted relation: William Henry Gates III Work_For Microsoft
+(William Henry Gates III, Work_For, Microsoft)
+	Processed 15 / 37 sentences
+No match found.
+No response received
+Extracted relation: Paul Allen Work_For Microsoft
+(Paul Allen, Work_For, Microsoft)
+	Processed 20 / 37 sentences
+Extracted relation: Warren Buffett Work_For Berkshire Hathaway
+(Warren Buffett, Work_For, Berkshire Hathaway)
+	Processed 25 / 37 sentences
+	Processed 30 / 37 sentences
+Extracted relation: Bill Gates Work_For Microsoft
+(Bill Gates, Work_For, Microsoft)
+Extracted relation: Paul Allen Work_For Microsoft
+(Paul Allen, Work_For, Microsoft)
+(None, Work_For, None)
+	Processed 35 / 37 sentences
+Extracted relation: Bill Gates Work_For Digital Equipment Corporation
+(Bill Gates, Work_For, Digital Equipment Corporation)
+
+URL ( 2 / 10): https://www.instagram.com/thisisbillgates/?hl=en
+	Fetching text from url ...
+	Webpage length (num characters): 61
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+
+URL ( 3 / 10): https://x.com/billgates
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 4 / 10): https://www.youtube.com/billgates
+	Fetching text from url ...
+	Webpage length (num characters): 171
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+Extracted relation: Bill Gates Work_For Google
+(Bill Gates, Work_For, Google)
+
+URL ( 5 / 10): https://news.microsoft.com/2020/03/13/microsoft-announces-change-to-its-board-of-directors/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 6 / 10): https://www.gatesnotes.com/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 7 / 10): https://www.linkedin.com/in/williamhgates
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 8 / 10): https://news.microsoft.com/2006/06/15/microsoft-announces-plans-for-july-2008-transition-for-bill-gates/
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 9 / 10): http://www.microsoft.com/
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 4 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 4 sentences
+
+URL ( 10 / 10): https://answers.microsoft.com/en-us/windows/forum/all/a-short-letter-to-bill-gates/59fdd4d0-6330-40da-9e66-fa6c29836454
+	Fetching text from url ...
+	Webpage length (num characters): 35
+	Annotating the webpage using spacy...
+	Extracted 1 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 1 sentences
+
+	Extracted annotations for 0 out of total 1 sentences
+	Relations extracted from this website: 0 (Overall: 6)
+y: ('Bill Gates', 'Work_For', 'Digital Equipment Corporation', 1.0)
+used_queries: set()
+
+=========== Iteration: 1 - Query: Bill Gates Digital Equipment Corporation ===========
+
+
+URL ( 1 / 10): https://en.wikipedia.org/wiki/Digital_Equipment_Corporation
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 40 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 40 sentences
+No match found.
+I am sorry, but I cannot find any names of people and organizations in the provided text. Therefore, I cannot extract the relation.
+No match found.
+I am sorry, but I cannot identify any PERSON working for an ORGANIZATION in the provided sentence. The sentence consists of a list of languages.
+	Processed 5 / 40 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+(C Gordon Bell, Work_For, Digital Equipment Corporation)
+	Processed 10 / 40 sentences
+	Processed 15 / 40 sentences
+	Processed 20 / 40 sentences
+Extracted relation: Elliot Hendrickson Work_For Digital Equipment Corporation
+(Elliot Hendrickson, Work_For, Digital Equipment Corporation)
+Extracted relation: Ken Olsen Work_For MIT Lincoln Laboratory
+(Ken Olsen, Work_For, MIT Lincoln Laboratory)
+(Harlan Anderson, Work_For, MIT Lincoln Laboratory)
+	Processed 25 / 40 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+(Harlan Anderson, Work_For, Digital Equipment Corporation)
+	Processed 30 / 40 sentences
+Extracted relation: Georges Doriot Work_For American Research and Development Corporation
+(Georges Doriot, Work_For, American Research and Development Corporation)
+	Processed 35 / 40 sentences
+(None, Work_For, None)
+
+URL ( 2 / 10): https://www.quora.com/Why-did-Digital-Equipment-Corporation-DEC-fail
+	Fetching text from url ...
+	Webpage length (num characters): 183
+	Annotating the webpage using spacy...
+	Extracted 4 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 4 sentences
+
+URL ( 3 / 10): https://www.gordon.edu/article.cfm?iArticleID=1078
+	Fetching text from url ...
+	Webpage length (num characters): 8189
+	Annotating the webpage using spacy...
+	Extracted 51 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 51 sentences
+Extracted relation: Kenneth H Olsen Work_For Digital Equipment Corporation
+(Kenneth H Olsen, Work_For, Digital Equipment Corporation)
+Extracted relation: Kenneth H Olsen Work_For Digital Equipment Corporation
+(Kenneth H Olsen, Work_For, Digital Equipment Corporation)
+Extracted relation: Bill Gates Work_For Microsoft
+(Bill Gates, Work_For, Microsoft)
+	Processed 5 / 51 sentences
+	Processed 10 / 51 sentences
+Extracted relation: Tom Phillips Work_For Raytheon
+(Tom Phillips, Work_For, Raytheon)
+	Processed 15 / 51 sentences
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corporation
+(Kenneth Olsen, Work_For, Digital Equipment Corporation)
+	Processed 20 / 51 sentences
+	Processed 25 / 51 sentences
+Extracted relation: Billy Graham Work_For Gordon College
+(Billy Graham, Work_For, Gordon College)
+	Processed 30 / 51 sentences
+Extracted relation: Ken Olsen Work_For Gordon College
+(Ken Olsen, Work_For, Gordon College)
+	Processed 35 / 51 sentences
+	Processed 40 / 51 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+(None, Work_For, None)
+	Processed 45 / 51 sentences
+	Processed 50 / 51 sentences
+
+URL ( 4 / 10): https://en.wikipedia.org/wiki/PDP-10
+	Fetching text from url ...
+	Webpage length (num characters): 10000
+	Annotating the webpage using spacy...
+	Extracted 49 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 49 sentences
+	Processed 5 / 49 sentences
+	Processed 10 / 49 sentences
+	Processed 15 / 49 sentences
+	Processed 20 / 49 sentences
+	Processed 25 / 49 sentences
+(None, Work_For, Bolt Beranek and Newman)
+	Processed 30 / 49 sentences
+	Processed 35 / 49 sentences
+	Processed 40 / 49 sentences
+	Processed 45 / 49 sentences
+
+URL ( 5 / 10): https://www.nbcnews.com/id/wbna41475250
+	Fetching text from url ...
+	Webpage length (num characters): 9415
+	Annotating the webpage using spacy...
+	Extracted 73 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 73 sentences
+No match found.
+No response received
+	Processed 5 / 73 sentences
+	Processed 10 / 73 sentences
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corp
+(Kenneth Olsen, Work_For, Digital Equipment Corp)
+	Processed 15 / 73 sentences
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corp
+(Kenneth Olsen, Work_For, Digital Equipment Corp)
+	Processed 20 / 73 sentences
+Extracted relation: Gordon Bell Work_For Digital Equipment Corporation
+(Gordon Bell, Work_For, Digital Equipment Corporation)
+	Processed 25 / 73 sentences
+No match found.
+No response received
+(None, Work_For, None)
+	Processed 30 / 73 sentences
+(None, Work_For, None)
+(None, Work_For, None)
+Extracted relation: Harlan Anderson Work_For Digital Equipment Corp
+(Harlan Anderson, Work_For, Digital Equipment Corp)
+	Processed 35 / 73 sentences
+	Processed 40 / 73 sentences
+Extracted relation: Dave Cutler Work_For Microsoft
+(Dave Cutler, Work_For, Microsoft)
+	Processed 45 / 73 sentences
+Extracted relation: Edgar Schein Work_For MIT Sloan School of Management
+(Edgar Schein, Work_For, MIT Sloan School of Management)
+	Processed 50 / 73 sentences
+Extracted relation: Dan Tymann Work_For Gordon College
+(Dan Tymann, Work_For, Gordon College)
+	Processed 55 / 73 sentences
+Extracted relation: Olsen Work_For Digital Equipment Corporation
+(Olsen, Work_For, Digital Equipment Corporation)
+	Processed 60 / 73 sentences
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corporation
+(Kenneth Olsen, Work_For, Digital Equipment Corporation)
+	Processed 65 / 73 sentences
+Extracted relation: Robert Palmer Work_For Digital Equipment Corporation
+(Robert Palmer, Work_For, Digital Equipment Corporation)
+	Processed 70 / 73 sentences
+
+URL ( 6 / 10): https://www.nytimes.com/2011/02/08/technology/business-computing/08olsen.html
+	Fetching text from url ...
+	Unable to fetch URL. Skipping.
+
+URL ( 7 / 10): https://www.britannica.com/money/Digital-Equipment-Corporation
+	Fetching text from url ...
+	Webpage length (num characters): 8318
+	Annotating the webpage using spacy...
+	Extracted 48 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 48 sentences
+	Processed 5 / 48 sentences
+	Processed 10 / 48 sentences
+Extracted relation: Enrique J Lores Work_For Digital Equipment Corporation
+(Enrique J Lores, Work_For, Digital Equipment Corporation)
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corporation
+(Kenneth Olsen, Work_For, Digital Equipment Corporation)
+(Harlan Anderson, Work_For, Digital Equipment Corporation)
+	Processed 15 / 48 sentences
+No match found.
+()
+	Processed 20 / 48 sentences
+	Processed 25 / 48 sentences
+	Processed 30 / 48 sentences
+	Processed 35 / 48 sentences
+Extracted relation: Robert Palmer Work_For Digital Equipment Corporation
+(Robert Palmer, Work_For, Digital Equipment Corporation)
+Extracted relation: Palmer Work_For Digital Equipment Corporation
+(Palmer, Work_For, Digital Equipment Corporation)
+	Processed 40 / 48 sentences
+	Processed 45 / 48 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+Extracted relation: Mark Hall Work_For Encyclopædia Britannica Incorporated
+(Mark Hall, Work_For, Encyclopædia Britannica Incorporated)
+
+URL ( 8 / 10): https://www.cs.stanford.edu/about/gates-computer-science-building
+	Fetching text from url ...
+	Webpage length (num characters): 6841
+	Annotating the webpage using spacy...
+	Extracted 35 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 35 sentences
+	Processed 5 / 35 sentences
+	Processed 10 / 35 sentences
+	Processed 15 / 35 sentences
+Extracted relation: Bill Gates Work_For Microsoft
+(Bill Gates, Work_For, Microsoft)
+	Processed 20 / 35 sentences
+	Processed 25 / 35 sentences
+Extracted relation: william r hewlett Work_For hewlett-packard
+(william r hewlett, Work_For, hewlett-packard)
+Extracted relation: J Erik Jonsson Work_For Texas Instruments
+(J Erik Jonsson, Work_For, Texas Instruments)
+Extracted relation: Donald T Valentine Work_For Sequoia Capital
+(Donald T Valentine, Work_For, Sequoia Capital)
+(Brook H Byers, Work_For, Kleiner Perkins)
+(Franklin P Johnson Jr, Work_For, Asset Management Company)
+(William K Bowes Jr, Work_For, US Venture Partners)
+	Processed 30 / 35 sentences
+
+URL ( 9 / 10): https://computerhistory.org/profile/ken-olsen/
+	Fetching text from url ...
+	Webpage length (num characters): 2925
+	Annotating the webpage using spacy...
+	Extracted 19 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 19 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+No match found.
+()
+	Processed 5 / 19 sentences
+Extracted relation: Harlan Anderson Work_For Digital Equipment Corporation
+(Harlan Anderson, Work_For, Digital Equipment Corporation)
+(Olsen, Work_For, Digital Equipment Corporation)
+Extracted relation: Kenneth Olsen Work_For Digital Equipment Corporation
+(Kenneth Olsen, Work_For, Digital Equipment Corporation)
+(None, Work_For, None)
+	Processed 10 / 19 sentences
+Extracted relation: Ken Olsen Work_For Digital Equipment Corporation
+(Ken Olsen, Work_For, Digital Equipment Corporation)
+Extracted relation: Bill Gates Work_For CHM
+(Bill Gates, Work_For, CHM)
+	Processed 15 / 19 sentences
+
+URL ( 10 / 10): https://onlineonly.christies.com/s/firsts-history-computing-paul-g-allen-collection/dec-pdp-10-ki10-mainframe-computer-125/230064
+	Fetching text from url ...
+	Webpage length (num characters): 9050
+	Annotating the webpage using spacy...
+	Extracted 70 sentences. Processing each sentence one by one to check for presence of right pair of named entity types; if so, will run the second pipeline ...
+	Processed 0 / 70 sentences
+	Processed 5 / 70 sentences
+No match found.
+No response received
+	Processed 10 / 70 sentences
+Extracted relation: Ed Roberts Work_For MITS
+(Ed Roberts, Work_For, MITS)
+Extracted relation: Paul Allen Work_For Intel
+(Paul Allen, Work_For, Intel)
+	Processed 15 / 70 sentences
+	Processed 20 / 70 sentences
+	Processed 25 / 70 sentences
+	Processed 30 / 70 sentences
+	Processed 35 / 70 sentences
+	Processed 40 / 70 sentences
+	Processed 45 / 70 sentences
+	Processed 50 / 70 sentences
+	Processed 55 / 70 sentences
+	Processed 60 / 70 sentences
+	Processed 65 / 70 sentences
+
+	Extracted annotations for 3 out of total 70 sentences
+	Relations extracted from this website: 2 (Overall: 33)
+
+================== ALL RELATIONS for per:employee_of ( 33 ) =================
+Confidence: 1.0000000 		| Subject: Enrique J Lores 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Paul Allen 		| Object: Intel
+Confidence: 1.0000000 		| Subject: Dan Tymann 		| Object: Gordon College
+Confidence: 1.0000000 		| Subject: Paul Allen 		| Object: Microsoft
+Confidence: 1.0000000 		| Subject: Elliot Hendrickson 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Ed Roberts 		| Object: MITS
+Confidence: 1.0000000 		| Subject: Harlan Anderson 		| Object: Digital Equipment Corp
+Confidence: 1.0000000 		| Subject: Palmer 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Mark Hall 		| Object: Encyclopædia Britannica Incorporated
+Confidence: 1.0000000 		| Subject: Warren Buffett 		| Object: Berkshire Hathaway
+Confidence: 1.0000000 		| Subject: Georges Doriot 		| Object: American Research and Development Corporation
+Confidence: 1.0000000 		| Subject: J Erik Jonsson 		| Object: Texas Instruments
+Confidence: 1.0000000 		| Subject: Bill Gates 		| Object: Microsoft
+Confidence: 1.0000000 		| Subject: Olsen 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Ken Olsen 		| Object: Gordon College
+Confidence: 1.0000000 		| Subject: william r hewlett 		| Object: hewlett-packard
+Confidence: 1.0000000 		| Subject: Kenneth Olsen 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Donald T Valentine 		| Object: Sequoia Capital
+Confidence: 1.0000000 		| Subject: Ken Olsen 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Billy Graham 		| Object: Gordon College
+Confidence: 1.0000000 		| Subject: Kenneth H Olsen 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Harlan Anderson 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Bill Gates 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Gordon Bell 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: Edgar Schein 		| Object: MIT Sloan School of Management
+Confidence: 1.0000000 		| Subject: Robert Palmer 		| Object: Digital Equipment Corporation
+Confidence: 1.0000000 		| Subject: William Henry Gates III 		| Object: Microsoft
+Confidence: 1.0000000 		| Subject: Tom Phillips 		| Object: Raytheon
+Confidence: 1.0000000 		| Subject: Bill Gates 		| Object: Google
+Confidence: 1.0000000 		| Subject: Ken Olsen 		| Object: MIT Lincoln Laboratory
+Confidence: 1.0000000 		| Subject: Bill Gates 		| Object: CHM
+Confidence: 1.0000000 		| Subject: Dave Cutler 		| Object: Microsoft
+Confidence: 1.0000000 		| Subject: Kenneth Olsen 		| Object: Digital Equipment Corp
+Total # of iterations = 2
